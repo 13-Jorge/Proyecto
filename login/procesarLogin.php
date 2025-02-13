@@ -18,7 +18,11 @@ session_start();
     
         if ($resultado === true) {
             $_SESSION['user'] = $user;
-            echo "<script>redirectToHome('$user');</script>";
+            if (esAdmin($user)) {
+                echo "<script>window.location.href = 'admin.php';</script>";
+            } else {
+                echo "<script>redirectToHome('$user');</script>";
+            }
         } else {
             echo "<div class='container mt-5'>
                     <div class='alert alert-danger' role='alert'>

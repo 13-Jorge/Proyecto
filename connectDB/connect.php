@@ -155,4 +155,16 @@ function logout() {
     exit();
 }
 
+function esAdmin($user) {
+    $pdo = connectDB();
+    if ($pdo != null) {
+        $consulta = "SELECT es_admin FROM login WHERE user = :user";
+        $resul = $pdo->prepare($consulta);
+        $resul->execute(["user" => $user]);
+        $registro = $resul->fetch(PDO::FETCH_ASSOC);
+        return $registro['es_admin'] ?? false;
+    }
+    return false;
+}
+
 ?>
