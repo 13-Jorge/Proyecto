@@ -1,5 +1,5 @@
 function cerrarSesion() {
     if (confirm('¿Deseas cerrar sesión?')) {
-        window.location.href = '/Proyecto/login/logout.php';
+        window.location.href = '../login/logout.php';
     }
 }
