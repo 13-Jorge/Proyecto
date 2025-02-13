@@ -37,11 +37,8 @@ include_once 'connectDB/connect.php';
                     </ul>
                     <div class="user-info d-flex align-items-center ml-3">
                         <?php if (isset($_SESSION['user'])): ?>
-                            <img src="img/user.svg" alt="User Icon" class="rounded-circle mr-2" style="width: 30px; height: 30px; cursor: pointer;" onclick="window.location.href='login/perfil.php'">
-                            <p class="mb-0 mr-2"><?php echo htmlspecialchars($_SESSION['user']); ?></p>
-                            <?php if (esAdmin($_SESSION['user'])): ?>
-                                <a href="login/admin.php" class="btn btn-outline-light mr-2">Admin</a>
-                            <?php endif; ?>
+                            <img src="img/user.svg" alt="User Icon" class="rounded-circle mr-2" style="width: 30px; height: 30px;">
+                            <a href="<?php echo esAdmin($_SESSION['user']) ? 'login/admin.php' : 'login/perfil.php'; ?>" class="btn btn-outline-light mr-2"><?php echo htmlspecialchars($_SESSION['user']); ?></a>
                             <button class="btn btn-outline-light" onclick="cerrarSesion()">Cerrar Sesión</button>
                         <?php else: ?>
                             <button class="btn btn-outline-light" onclick="window.location.href='login/login.php'">Iniciar Sesión</button>
