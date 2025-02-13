@@ -20,14 +20,14 @@ if (!isset($_SESSION['user']) || !esAdmin($_SESSION['user'])) {
 </head>
 <body>
     <div class="container mt-5">
+        <div class="d-flex justify-content-end mb-3">
+            <a href="../index.php" class="btn btn-secondary mr-2">Volver al Inicio</a>
+            <button class="btn btn-danger" onclick="cerrarSesion()">Cerrar Sesión</button>
+        </div>
         <h1 class="text-center mb-4">Panel de Administración</h1>
         <div class="card p-4 mt-3">
             <p>Bienvenido, <?php echo htmlspecialchars($_SESSION['user']); ?>. Aquí puedes gestionar el sitio.</p>
             <!-- Admin content goes here -->
-            <div class="d-flex justify-content-center mt-3">
-                <a href="../index.php" class="btn btn-secondary mr-2">Volver al Inicio</a>
-                <button class="btn btn-danger" onclick="cerrarSesion()">Cerrar Sesión</button>
-            </div>
         </div>
     </div>
 </body>
