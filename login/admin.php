@@ -16,6 +16,7 @@ if (!isset($_SESSION['user']) || !esAdmin($_SESSION['user'])) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../styles/admin.css">
+    <script src="../js/cerrarSesion.js"></script>
 </head>
 <body>
     <div class="container mt-5">
@@ -23,6 +24,10 @@ if (!isset($_SESSION['user']) || !esAdmin($_SESSION['user'])) {
         <div class="card p-4 mt-3">
             <p>Bienvenido, <?php echo htmlspecialchars($_SESSION['user']); ?>. Aquí puedes gestionar el sitio.</p>
             <!-- Admin content goes here -->
+            <div class="d-flex justify-content-center mt-3">
+                <a href="../index.php" class="btn btn-secondary mr-2">Volver al Inicio</a>
+                <button class="btn btn-danger" onclick="cerrarSesion()">Cerrar Sesión</button>
+            </div>
         </div>
     </div>
 </body>
