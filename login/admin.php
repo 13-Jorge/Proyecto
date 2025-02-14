@@ -6,6 +6,10 @@ if (!isset($_SESSION['user']) || !esAdmin($_SESSION['user'])) {
     header('Location: login.php');
     exit();
 }
+
+// Fetch notifications
+$notificaciones = obtenerNotificaciones();
+$numNotificaciones = count($notificaciones);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -41,6 +45,9 @@ if (!isset($_SESSION['user']) || !esAdmin($_SESSION['user'])) {
                 </a>
                 <a href="#" class="list-group-item list-group-item-action" data-section="notificaciones">
                     <i class="fas fa-bell mr-2"></i>Notificaciones
+                    <?php if ($numNotificaciones > 0): ?>
+                        <span class="badge badge-danger ml-2"><?php echo $numNotificaciones; ?></span>
+                    <?php endif; ?>
                 </a>
             </div>
         </div>

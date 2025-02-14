@@ -20,7 +20,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function loadSection(section) {
-        if (section === 'usuarios') {
+        if (section === 'notificaciones') {
+            fetch('fetchNotificaciones.php')
+                .then(response => response.text())
+                .then(data => {
+                    content.innerHTML = data;
+                });
+        } else if (section === 'usuarios') {
             fetch('fetchUsuarios.php')
                 .then(response => response.text())
                 .then(data => {
