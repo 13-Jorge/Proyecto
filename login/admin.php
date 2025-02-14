@@ -6,26 +6,6 @@ if (!isset($_SESSION['user']) || !esAdmin($_SESSION['user'])) {
     header('Location: login.php');
     exit();
 }
-
-// Fetch notifications
-$notificaciones = [
-    ['id' => 1, 'mensaje' => 'Bienvenido al sistema de administración.', 'leido' => false],
-    // Add more notifications as needed
-];
-
-// Mark notification as read
-if (isset($_GET['marcar_leido'])) {
-    foreach ($notificaciones as &$notificacion) {
-        if ($notificacion['id'] == $_GET['marcar_leido']) {
-            $notificacion['leido'] = true;
-        }
-    }
-    unset($notificacion);
-}
-
-$numNotificaciones = count(array_filter($notificaciones, function($notificacion) {
-    return !$notificacion['leido'];
-}));
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -61,9 +41,6 @@ $numNotificaciones = count(array_filter($notificaciones, function($notificacion)
                 </a>
                 <a href="#" class="list-group-item list-group-item-action" data-section="notificaciones">
                     <i class="fas fa-bell mr-2"></i>Notificaciones
-                    <?php if ($numNotificaciones > 0): ?>
-                        <span class="badge badge-danger ml-2"><?php echo $numNotificaciones; ?></span>
-                    <?php endif; ?>
                 </a>
             </div>
         </div>
