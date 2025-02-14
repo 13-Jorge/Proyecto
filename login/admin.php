@@ -22,6 +22,7 @@ $numNotificaciones = 5; // Ejemplo, reemplaza con la lógica real
     <link rel="stylesheet" href="../styles/common.css">
     <link rel="stylesheet" href="../styles/admin.css">
     <script src="../js/cerrarSesion.js"></script>
+    <script src="../js/admin.js"></script>
 </head>
 <body>
     <div class="d-flex" id="wrapper">
@@ -53,7 +54,7 @@ $numNotificaciones = 5; // Ejemplo, reemplaza con la lógica real
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+                <button class="btn btn-primary" id="menu-toggle">Menu</button>
                 <div class="ml-auto">
                     <a href="../index.php" class="btn btn-secondary mr-2">Volver al Inicio</a>
                     <button class="btn btn-danger" onclick="cerrarSesion()">Cerrar Sesión</button>
@@ -74,30 +75,5 @@ $numNotificaciones = 5; // Ejemplo, reemplaza con la lógica real
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-    $(document).ready(function() {
-        $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-
-        $(".list-group-item").click(function(e) {
-            e.preventDefault();
-            $(".list-group-item").removeClass("active");
-            $(this).addClass("active");
-            var section = $(this).data("section");
-            loadSection(section);
-        });
-
-        function loadSection(section) {
-            // Aquí cargarías el contenido de cada sección
-            // Por ahora, solo mostraremos un mensaje
-            $("#content").html("<h2>Sección de " + section + "</h2><p>Contenido de la sección " + section + " se cargará aquí.</p>");
-        }
-
-        // Cargar la sección de usuarios por defecto
-        loadSection("usuarios");
-    });
-    </script>
 </body>
 </html>

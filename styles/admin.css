@@ -1,3 +1,10 @@
+:root {
+    --primary-color: #d4af37;
+    --secondary-color: #343a40;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+}
+
 body {
     overflow-x: hidden;
 }
@@ -6,6 +13,7 @@ body {
     min-height: 100vh;
     margin-left: -15rem;
     transition: margin .25s ease-out;
+    background-color: var(--secondary-color);
 }
 
 #sidebar-wrapper .sidebar-heading {
@@ -15,6 +23,17 @@ body {
 
 #sidebar-wrapper .list-group {
     width: 15rem;
+}
+
+.list-group-item {
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+    border: none;
+}
+
+.list-group-item:hover, .list-group-item.active {
+    background-color: var(--primary-color);
+    color: var(--dark-color);
 }
 
 #page-content-wrapper {
@@ -40,11 +59,24 @@ body {
     }
 }
 
-.list-group-item.active {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-}
-
 .badge-danger {
     background-color: #dc3545;
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
+    padding: 10px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--dark-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--light-color);
 }
