@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
 
         const formData = new FormData(contactForm);
-        fetch('enviarMensaje.php', {
+        fetch('../login/enviarMensaje.php', {
             method: 'POST',
             body: formData
         })
