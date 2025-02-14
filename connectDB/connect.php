@@ -177,4 +177,34 @@ function esAdmin($user) {
     return false;
 }
 
+function insertarNotificacion($autor, $mensaje) {
+    $pdo = connectDB();
+    if ($pdo != null) {
+        $consulta = "INSERT INTO notificaciones (autor, mensaje, leido) VALUES (:autor, :mensaje, 0)";
+        $resul = $pdo->prepare($consulta);
+        $resul->execute([
+            'autor' => $autor,
+            'mensaje' => $mensaje
+        ]);
+    }
+}
+
+function obtenerNotificaciones() {
+    $pdo = connectDB();
+    if ($pdo != null) {
+        $consulta = "SELECT * FROM notificaciones WHERE leido = 0";
+        $resul = $pdo->query($consulta);
+        return $resul->fetchAll(PDO::FETCH_ASSOC);
+    }
+    return [];
+}
+
+function marcarNotificacionLeida($id) {
+    $pdo = connectDB();
+    if ($pdo != null) {
+        $consulta = "UPDATE notificaciones SET leido = 1 WHERE id = :id";
+        $resul = $pdo->prepare($consulta);
+        $resul->execute(['id' => $id]);
+    }
+}
 ?>
