@@ -7,8 +7,25 @@ if (!isset($_SESSION['user']) || !esAdmin($_SESSION['user'])) {
     exit();
 }
 
-// Aquí deberías obtener el número de notificaciones no leídas
-$numNotificaciones = 5; // Ejemplo, reemplaza con la lógica real
+// Fetch notifications
+$notificaciones = [
+    ['id' => 1, 'mensaje' => 'Bienvenido al sistema de administración.', 'leido' => false],
+    // Add more notifications as needed
+];
+
+// Mark notification as read
+if (isset($_GET['marcar_leido'])) {
+    foreach ($notificaciones as &$notificacion) {
+        if ($notificacion['id'] == $_GET['marcar_leido']) {
+            $notificacion['leido'] = true;
+        }
+    }
+    unset($notificacion);
+}
+
+$numNotificaciones = count(array_filter($notificaciones, function($notificacion) {
+    return !$notificacion['leido'];
+}));
 ?>
 <!DOCTYPE html>
 <html lang="es">
