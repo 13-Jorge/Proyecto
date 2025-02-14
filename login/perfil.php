@@ -7,7 +7,7 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-$user = $_SESSION['user'];
+$user = isset($_GET['user']) && esAdmin($_SESSION['user']) ? $_GET['user'] : $_SESSION['user'];
 $datosUsuario = obtenerDatosUsuario($user);
 ?>
 <!DOCTYPE html>
@@ -23,6 +23,12 @@ $datosUsuario = obtenerDatosUsuario($user);
 </head>
 <body>
     <div class="container mt-5">
+        <div class="d-flex justify-content-end mb-3">
+            <a href="../index.php" class="btn btn-secondary mr-2">Volver al Inicio</a>
+            <?php if (esAdmin($_SESSION['user'])): ?>
+                <a href="admin.php" class="btn btn-secondary mr-2">Administrador</a>
+            <?php endif; ?>
+        </div>
         <h1 class="text-center mb-4">Perfil de Usuario</h1>
         <div class="card p-4 mt-3">
             <?php if ($datosUsuario): ?>
@@ -67,9 +73,6 @@ $datosUsuario = obtenerDatosUsuario($user);
                     Error al obtener los datos del usuario.
                 </div>
             <?php endif; ?>
-            <div class="text-center mt-3">
-                <a href="../index.php" class="btn btn-secondary">Volver al Inicio</a>
-            </div>
         </div>
     </div>
 </body>
