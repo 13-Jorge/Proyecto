@@ -33,6 +33,7 @@ $datosUsuario = obtenerDatosUsuario($user);
         <div class="card p-4 mt-3">
             <?php if ($datosUsuario): ?>
                 <form method="post" action="actualizarPerfil.php">
+                    <input type="hidden" name="oldUser" value="<?php echo htmlspecialchars($datosUsuario['user']); ?>">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="nombre">Nombre:</label>
@@ -65,7 +66,7 @@ $datosUsuario = obtenerDatosUsuario($user);
                     </div>
                     <div class="d-flex justify-content-center mt-3">
                         <button type="submit" class="btn btn-primary mr-2">Actualizar Datos</button>
-                        <button type="button" class="btn btn-danger" onclick="borrarCuenta()">Borrar Cuenta</button>
+                        <button type="button" class="btn btn-danger" onclick="borrarCuenta('<?php echo htmlspecialchars($datosUsuario['user']); ?>')">Borrar Cuenta</button>
                     </div>
                 </form>
             <?php else: ?>

@@ -7,6 +7,6 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-$user = $_SESSION['user'];
+$user = recogerValor('user');
 borrarCuenta($user);
 ?>
