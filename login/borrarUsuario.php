@@ -7,13 +7,8 @@ if (!isset($_SESSION['user']) || !esAdmin($_SESSION['user'])) {
     exit();
 }
 
-$id = recogerValor('user');
-$pdo = connectDB();
-if ($pdo != null) {
-    $consulta = "DELETE FROM login WHERE user = :user";
-    $resul = $pdo->prepare($consulta);
-    $resul->execute(['user' => $id]);
-}
+$user = recogerValor('id');
+borrarCuenta($user);
 
 header('Location: admin.php');
 exit();

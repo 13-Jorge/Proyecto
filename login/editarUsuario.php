@@ -18,7 +18,8 @@ if ($pdo != null) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user = recogerValor('user');
+    $oldUser = recogerValor('oldUser');
+    $newUser = recogerValor('user');
     $nombre = recogerValor('nombre');
     $apellidos = recogerValor('apellidos');
     $email = recogerValor('email');
@@ -26,16 +27,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pass = recogerValor('pass');
     $es_admin = isset($_POST['es_admin']) ? 1 : 0;
 
-    $consulta = "UPDATE login SET user = :user, nombre = :nombre, apellidos = :apellidos, email = :email, telefono = :telefono, pass = :pass, es_admin = :es_admin WHERE user = :user";
+    $consulta = "UPDATE login SET user = :newUser, nombre = :nombre, apellidos = :apellidos, email = :email, telefono = :telefono, pass = :pass, es_admin = :es_admin WHERE user = :oldUser";
     $resul = $pdo->prepare($consulta);
     $resul->execute([
-        'user' => $user,
+        'newUser' => $newUser,
         'nombre' => $nombre,
         'apellidos' => $apellidos,
         'email' => $email,
         'telefono' => $telefono,
         'pass' => $pass,
-        'es_admin' => $es_admin
+        'es_admin' => $es_admin,
+        'oldUser' => $oldUser
     ]);
     header('Location: admin.php');
     exit();
@@ -56,6 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="card p-4 mt-3">
             <?php if ($user): ?>
                 <form method="post">
+                    <input type="hidden" name="oldUser" value="<?php echo htmlspecialchars($user['user']); ?>">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="user">Usuario:</label>
