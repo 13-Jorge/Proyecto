@@ -7,8 +7,33 @@ if (!isset($_SESSION['user']) || !esAdmin($_SESSION['user'])) {
     exit();
 }
 
-// Aquí deberías obtener el número de notificaciones no leídas
-$numNotificaciones = 5; // Ejemplo, reemplaza con la lógica real
+// Fetch all users
+$pdo = connectDB();
+$users = [];
+if ($pdo != null) {
+    $consulta = "SELECT * FROM login";
+    $resul = $pdo->query($consulta);
+    $users = $resul->fetchAll(PDO::FETCH_ASSOC);
+}
+
+// Fetch notifications
+$notificaciones = [
+    ['id' => 1, 'mensaje' => 'Bienvenido al sistema de administración.', 'leido' => false]
+];
+
+// Mark notification as read
+if (isset($_GET['marcar_leido'])) {
+    foreach ($notificaciones as &$notificacion) {
+        if ($notificacion['id'] == $_GET['marcar_leido']) {
+            $notificacion['leido'] = true;
+        }
+    }
+    unset($notificacion);
+}
+
+$numNotificaciones = count(array_filter($notificaciones, function($notificacion) {
+    return !$notificacion['leido'];
+}));
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -66,7 +91,50 @@ $numNotificaciones = 5; // Ejemplo, reemplaza con la lógica real
                 
                 <!-- Contenido dinámico -->
                 <div id="content">
-                    <!-- El contenido se cargará dinámicamente aquí -->
+                    <!-- Gestión de Usuarios -->
+                    <h2>Gestión de Usuarios</h2>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Usuario</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Email</th>
+                                <th>Teléfono</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($users as $user): ?>
+                                <tr>
+                                    <td><?php echo htmlspecialchars($user['id']); ?></td>
+                                    <td><?php echo htmlspecialchars($user['user']); ?></td>
+                                    <td><?php echo htmlspecialchars($user['nombre']); ?></td>
+                                    <td><?php echo htmlspecialchars($user['apellidos']); ?></td>
+                                    <td><?php echo htmlspecialchars($user['email']); ?></td>
+                                    <td><?php echo htmlspecialchars($user['telefono']); ?></td>
+                                    <td>
+                                        <a href="editarUsuario.php?id=<?php echo $user['id']; ?>" class="btn btn-primary btn-sm">Editar</a>
+                                        <a href="borrarUsuario.php?id=<?php echo $user['id']; ?>" class="btn btn-danger btn-sm">Borrar</a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+
+                    <!-- Notificaciones -->
+                    <h2>Notificaciones</h2>
+                    <ul class="list-group">
+                        <?php foreach ($notificaciones as $notificacion): ?>
+                            <li class="list-group-item <?php echo $notificacion['leido'] ? 'list-group-item-secondary' : ''; ?>">
+                                <?php echo htmlspecialchars($notificacion['mensaje']); ?>
+                                <?php if (!$notificacion['leido']): ?>
+                                    <a href="?marcar_leido=<?php echo $notificacion['id']; ?>" class="btn btn-sm btn-primary float-right">Marcar como leído</a>
+                                <?php endif; ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
                 </div>
             </div>
         </div>
