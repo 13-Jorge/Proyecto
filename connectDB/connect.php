@@ -147,7 +147,7 @@ function borrarCuenta($user) {
                             alert('Cuenta borrada correctamente');
                             window.location.href = '../index.php'; 
                           </script>";
-            }
+                }
             } else {
                 echo "<script>
                         alert('Error al borrar la cuenta');
