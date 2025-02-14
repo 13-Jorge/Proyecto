@@ -7,12 +7,13 @@ if (!isset($_SESSION['user']) || !esAdmin($_SESSION['user'])) {
     exit();
 }
 
-// Fetch all users
+// Fetch all users except the admin
 $pdo = connectDB();
 $users = [];
 if ($pdo != null) {
-    $consulta = "SELECT * FROM login";
-    $resul = $pdo->query($consulta);
+    $consulta = "SELECT * FROM login WHERE user != :adminUser";
+    $resul = $pdo->prepare($consulta);
+    $resul->execute(['adminUser' => $_SESSION['user']]);
     $users = $resul->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>
