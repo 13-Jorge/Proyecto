@@ -7,13 +7,13 @@ if (!isset($_SESSION['user']) || !esAdmin($_SESSION['user'])) {
     exit();
 }
 
-$id = recogerValor('id');
+$id = recogerValor('user');
 $pdo = connectDB();
 $user = null;
 if ($pdo != null) {
-    $consulta = "SELECT * FROM login WHERE id = :id";
+    $consulta = "SELECT * FROM login WHERE user = :user";
     $resul = $pdo->prepare($consulta);
-    $resul->execute(['id' => $id]);
+    $resul->execute(['user' => $id]);
     $user = $resul->fetch(PDO::FETCH_ASSOC);
 }
 
