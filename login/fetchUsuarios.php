@@ -37,11 +37,9 @@ if ($pdo != null) {
                 <td><?php echo htmlspecialchars($user['email']); ?></td>
                 <td><?php echo htmlspecialchars($user['telefono']); ?></td>
                 <td>
-                    <a href="editarUsuario.php?id=<?php echo $user['user']; ?>" class="btn btn-primary btn-sm">Editar</a>
-                    <a href="borrarUsuario.php?id=<?php echo $user['user']; ?>" class="btn btn-danger btn-sm">Borrar</a>
+                    <a href="perfil.php?user=<?php echo $user['user']; ?>" class="btn btn-primary btn-sm">Gestionar Usuario</a>
                 </td>
             </tr>
         <?php endforeach; ?>
     </tbody>
 </table>
-```
