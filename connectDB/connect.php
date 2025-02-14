@@ -96,10 +96,10 @@ function guardarDatos($user, $pass, $nombre, $apellidos, $email, $prefijoPais, $
     }
 }
 
-function actualizarPerfil($oldUser, $newUser, $nombre, $apellidos, $email, $telefono, $pass) {
+function actualizarPerfil($oldUser, $newUser, $nombre, $apellidos, $email, $telefono, $pass, $es_admin) {
     $pdo = connectDB();
     if ($pdo != null) {
-        $consulta = "UPDATE login SET user = :newUser, nombre = :nombre, apellidos = :apellidos, email = :email, telefono = :telefono, pass = :pass WHERE user = :oldUser";
+        $consulta = "UPDATE login SET user = :newUser, nombre = :nombre, apellidos = :apellidos, email = :email, telefono = :telefono, pass = :pass, es_admin = :es_admin WHERE user = :oldUser";
         $resul = $pdo->prepare($consulta);
         if ($resul != null) {
             if ($resul->execute([
@@ -109,17 +109,20 @@ function actualizarPerfil($oldUser, $newUser, $nombre, $apellidos, $email, $tele
                 "email" => $email,
                 "telefono" => $telefono,
                 "pass" => $pass,
+                "es_admin" => $es_admin,
                 "oldUser" => $oldUser
             ])) {
-                $_SESSION['user'] = $newUser;
+                if ($_SESSION['user'] === $oldUser) {
+                    $_SESSION['user'] = $newUser;
+                }
                 echo "<script>
                         alert('Datos actualizados correctamente');
-                        window.location.href = '../login/perfil.php'; // Actualizar ruta
+                        window.location.href = '../login/perfil.php?user=$newUser'; // Actualizar ruta
                       </script>";
             } else {
                 echo "<script>
                         alert('Error al actualizar los datos');
-                        window.location.href = '../login/perfil.php'; // Actualizar ruta
+                        window.location.href = '../login/perfil.php?user=$oldUser'; // Actualizar ruta
                       </script>";
             }
         }
