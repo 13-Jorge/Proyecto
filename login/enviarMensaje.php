@@ -10,13 +10,7 @@ if (!isset($_SESSION['user'])) {
 $autor = $_SESSION['user'];
 $mensaje = recogerValor('message');
 
-$query = "INSERT INTO mensajes (autor, mensaje) VALUES ('$autor', '$mensaje')";
-$result = mysqli_query($conn, $query);
+insertarNotificacion($autor, $mensaje);
 
-if ($result) {
-    insertarNotificacion($autor, $mensaje);
-    echo "Mensaje enviado correctamente";
-} else {
-    echo "Error al enviar el mensaje";
-}
+echo "Mensaje enviado correctamente";
 ?>
