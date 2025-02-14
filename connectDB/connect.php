@@ -147,7 +147,7 @@ function borrarCuenta($user) {
                             alert('Cuenta borrada correctamente');
                             window.location.href = '../index.php'; 
                           </script>";
-                }
+            }
             } else {
                 echo "<script>
                         alert('Error al borrar la cuenta');
@@ -192,7 +192,7 @@ function insertarNotificacion($autor, $mensaje) {
 function obtenerNotificaciones() {
     $pdo = connectDB();
     if ($pdo != null) {
-        $consulta = "SELECT * FROM notificaciones WHERE leido = 0";
+        $consulta = "SELECT n.*, l.email FROM notificaciones n JOIN login l ON n.autor = l.user";
         $resul = $pdo->query($consulta);
         return $resul->fetchAll(PDO::FETCH_ASSOC);
     }

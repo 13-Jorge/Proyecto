@@ -9,7 +9,9 @@ if (!isset($_SESSION['user']) || !esAdmin($_SESSION['user'])) {
 
 // Fetch notifications
 $notificaciones = obtenerNotificaciones();
-$numNotificaciones = count($notificaciones);
+$numNotificaciones = count(array_filter($notificaciones, function($notificacion) {
+    return !$notificacion['leido'];
+}));
 ?>
 <!DOCTYPE html>
 <html lang="es">
