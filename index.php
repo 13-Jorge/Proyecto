@@ -157,21 +157,17 @@ include_once 'connectDB/connect.php';
             <h2 class="text-center">Contacto</h2>
             <div class="row">
                 <div class="col-md-6 mx-auto">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Nombre</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Correo Electrónico</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Mensaje</label>
-                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">Enviar</button>
-                    </form>
+                    <?php if (isset($_SESSION['user'])): ?>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="message">Mensaje</label>
+                                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+                        </form>
+                    <?php else: ?>
+                        <p class="text-center">Por favor, <a href="login/login.php">inicia sesión</a> para enviar un mensaje.</p>
+                    <?php endif; ?>
                 </div>
             </div>
         </section>
