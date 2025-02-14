@@ -133,11 +133,18 @@ function borrarCuenta($user) {
         $resul = $pdo->prepare($consulta);
         if ($resul != null) {
             if ($resul->execute(["user" => $user])) {
-                session_destroy();
-                echo "<script>
-                        alert('Cuenta borrada correctamente');
-                        window.location.href = '../index.php'; 
-                      </script>";
+                if (esAdmin($_SESSION['user'])) {
+                    echo "<script>
+                            alert('Cuenta borrada correctamente');
+                            window.location.href = '../login/admin.php'; 
+                          </script>";
+                } else {
+                    session_destroy();
+                    echo "<script>
+                            alert('Cuenta borrada correctamente');
+                            window.location.href = '../index.php'; 
+                          </script>";
+                }
             } else {
                 echo "<script>
                         alert('Error al borrar la cuenta');
