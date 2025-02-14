@@ -27,18 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pass = recogerValor('pass');
     $es_admin = isset($_POST['es_admin']) ? 1 : 0;
 
-    $consulta = "UPDATE login SET user = :newUser, nombre = :nombre, apellidos = :apellidos, email = :email, telefono = :telefono, pass = :pass, es_admin = :es_admin WHERE user = :oldUser";
-    $resul = $pdo->prepare($consulta);
-    $resul->execute([
-        'newUser' => $newUser,
-        'nombre' => $nombre,
-        'apellidos' => $apellidos,
-        'email' => $email,
-        'telefono' => $telefono,
-        'pass' => $pass,
-        'es_admin' => $es_admin,
-        'oldUser' => $oldUser
-    ]);
+    actualizarPerfil($oldUser, $newUser, $nombre, $apellidos, $email, $telefono, $pass, $es_admin);
     header('Location: admin.php');
     exit();
 }
