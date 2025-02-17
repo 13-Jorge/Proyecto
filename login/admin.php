@@ -9,12 +9,13 @@ if (!isset($_SESSION['user']) || !esAdmin($_SESSION['user'])) {
 
 // Fetch notifications
 $notificaciones = obtenerNotificaciones();
-$numNotificaciones = count(array_filter($notificaciones, function($notificacion) {
+$numNotificaciones = count(array_filter($notificaciones, function ($notificacion) {
     return !$notificacion['leido'];
 }));
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,8 +28,38 @@ $numNotificaciones = count(array_filter($notificaciones, function($notificacion)
     <script src="../js/cerrarSesion.js"></script>
     <script src="../js/admin.js"></script>
 </head>
+
 <body>
-    <?php include_once "../inludes/header.php"; ?>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.php">
+                    <img src="../img/logo.jpg" alt="CM Gestión Inmobiliaria">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.php">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="propiedades.php">Propiedades</a></li>
+                        <li class="nav-item"><a class="nav-link" href="homestaging.php">Homestaging</a></li>
+                        <li class="nav-item"><a class="nav-link" href="solicitarVisita.php">Solicitar Visita</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contacto.php">Contacto</a></li>
+                    </ul>
+                    <div class="user-info d-flex align-items-center ml-3">
+                        <?php if (isset($_SESSION['user'])): ?>
+                            <img src="../img/user.svg" alt="User Icon" class="rounded-circle mr-2" style="width: 30px; height: 30px;">
+                            <a href="<?php echo esAdmin($_SESSION['user']) ? 'login/admin.php' : 'login/perfil.php'; ?>" class="btn btn-outline-light mr-2"><?php echo htmlspecialchars($_SESSION['user']); ?></a>
+                            <button class="btn btn-outline-light" onclick="cerrarSesion()">Cerrar Sesión</button>
+                        <?php else: ?>
+                            <button class="btn btn-outline-light" onclick="window.location.href='login/login.php'">Iniciar Sesión</button>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div class="bg-light border-right" id="sidebar-wrapper">
@@ -59,15 +90,11 @@ $numNotificaciones = count(array_filter($notificaciones, function($notificacion)
         <div id="page-content-wrapper">
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                 <button class="btn btn-primary" id="menu-toggle">Menu</button>
-                <div class="ml-auto">
-                    <a href="../index.php" class="btn btn-secondary mr-2">Volver al Inicio</a>
-                    <button class="btn btn-danger" onclick="cerrarSesion()">Cerrar Sesión</button>
-                </div>
             </nav>
 
             <div class="container-fluid mt-4">
                 <h1 class="mt-4 mb-4">Panel de Administración</h1>
-                
+
                 <!-- Contenido dinámico -->
                 <div id="content">
                     <!-- El contenido se cargará dinámicamente aquí -->
@@ -80,4 +107,5 @@ $numNotificaciones = count(array_filter($notificaciones, function($notificacion)
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
