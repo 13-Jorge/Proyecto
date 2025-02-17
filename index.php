@@ -128,6 +128,32 @@ include_once 'connectDB/connect.php';
             </div>
         </section>
 
+        
+        <!-- Sección Testimonios -->
+        <section id="testimonials" class="testimonials mt-5">
+            <h2 class="text-center">Testimonios</h2>
+            <div class="row">
+                <?php
+                $testimonials = [
+                    ['text' => 'Excelente servicio, me ayudaron a vender mi casa rápidamente.', 'author' => 'Ana López'],
+                    ['text' => 'Muy profesionales, todo el proceso fue transparente y fácil.', 'author' => 'Pedro Martínez'],
+                    ['text' => 'Recomiendo CM Gestión Inmobiliaria, son los mejores.', 'author' => 'Laura Sánchez']
+                ];
+                foreach ($testimonials as $testimonial):
+                ?>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="card-text"><i class="fas fa-quote-left mr-2"></i><?php echo htmlspecialchars($testimonial['text']); ?></p>
+                                <h5 class="card-title text-right">- <?php echo htmlspecialchars($testimonial['author']); ?></h5>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </section>
+
+
         <!-- Sección Contacto -->
         <section id="contact" class="contact mt-5">
             <h2 class="text-center">Contacto</h2>
