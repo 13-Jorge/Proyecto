@@ -5,7 +5,7 @@ include_once 'connectDB/connect.php';
 $pdo = connectDB();
 $propiedades = [];
 if ($pdo != null) {
-    $consulta = "SELECT * FROM propiedades";
+    $consulta = "SELECT p.*, i.imagen FROM propiedades p LEFT JOIN imagenes i ON p.id = i.propiedad_id";
     $resul = $pdo->query($consulta);
     $propiedades = $resul->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -62,7 +62,11 @@ if ($pdo != null) {
             <?php foreach ($propiedades as $propiedad): ?>
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
-                        <img src="data:image/jpeg;base64,<?php echo base64_encode($propiedad['imagen']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($propiedad['titulo']); ?>">
+                        <?php if ($propiedad['imagen']): ?>
+                            <img src="data:image/jpeg;base64,<?php echo base64_encode($propiedad['imagen']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($propiedad['titulo']); ?>">
+                        <?php else: ?>
+                            <img src="img/default-property.jpg" class="card-img-top" alt="Imagen no disponible">
+                        <?php endif; ?>
                         <div class="card-body">
                             <h5 class="card-title"><?php echo htmlspecialchars($propiedad['titulo']); ?></h5>
                             <p class="card-text"><?php echo htmlspecialchars($propiedad['descripcion']); ?></p>
