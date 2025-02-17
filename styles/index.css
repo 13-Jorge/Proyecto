@@ -1,43 +1,63 @@
-
 .carousel-item img {
     height: 600px;
     object-fit: cover;
-}
-
-.carousel-caption {
+  }
+  
+  .carousel-caption {
     background-color: rgba(0, 0, 0, 0.6);
     padding: 20px;
     border-radius: 10px;
-}
-
-.about-us {
-    background-color: var(--primary-color);
-    color: var(--light-color);
+  }
+  
+  .about-us {
     padding: 60px 0;
     border-radius: 0;
     position: relative;
     overflow: hidden;
-}
-
-.about-us::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('img/pattern.png') repeat;
-    opacity: 0.1;
-}
-
-.testimonials .card {
+  }
+  
+  .about-us .card {
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .about-us .card-header {
+    background-color: var(--primary-color);
+    border-bottom: none;
+  }
+  
+  .about-us .btn-link {
+    color: var(--light-color);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  .about-us .btn-link:hover,
+  .about-us .btn-link:focus {
+    color: var(--dark-color);
+    text-decoration: none;
+  }
+  
+  .about-us .card-body {
+    background-color: var(--light-color);
+  }
+  
+  .testimonials .card {
     background-color: var(--light-color);
     border: 1px solid #e0e0e0;
-}
-
-.contact form {
+  }
+  
+  .contact form {
     background-color: var(--light-color);
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
+  }
+  
+  @media (max-width: 768px) {
+    .carousel-item img {
+      height: 400px;
+    }
+  }
+  
+  
