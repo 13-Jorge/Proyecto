@@ -18,7 +18,7 @@ include_once 'connectDB/connect.php';
 
 <body>
     <!-- Header con la barra de navegación -->
-<header>
+    <header>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="index.php">
@@ -94,7 +94,7 @@ include_once 'connectDB/connect.php';
             <div class="container">
                 <h2 class="mb-4">Quiénes Somos</h2>
                 <p class="lead">En CM Gestión Inmobiliaria, nos dedicamos a una misión clara: vender tu propiedad en las mejores condiciones y en el menor tiempo posible. Nuestro equipo de expertos se especializa en guiarte a través de cada paso del proceso de venta, ofreciendo un servicio personalizado y de calidad. No somos simplemente agentes inmobiliarios; somos tus aliados estratégicos en el mercado inmobiliario, comprometidos a maximizar el valor de tu propiedad y a hacer que tu experiencia de venta sea lo más fluida y exitosa posible.</p>
-                <a href="#contact" class="btn btn-light mt-3">Contáctanos</a>
+                <a href="contacto.php" class="btn btn-light mt-3">Contáctanos</a>
             </div>
         </section>
 
@@ -128,7 +128,6 @@ include_once 'connectDB/connect.php';
             </div>
         </section>
 
-        
         <!-- Sección Testimonios -->
         <section id="testimonials" class="testimonials mt-5">
             <h2 class="text-center">Testimonios</h2>
@@ -150,27 +149,6 @@ include_once 'connectDB/connect.php';
                         </div>
                     </div>
                 <?php endforeach; ?>
-            </div>
-        </section>
-
-
-        <!-- Sección Contacto -->
-        <section id="contact" class="contact mt-5">
-            <h2 class="text-center">Contacto</h2>
-            <div class="row">
-                <div class="col-md-6 mx-auto">
-                    <?php if (isset($_SESSION['user'])): ?>
-                        <form id="contactForm">
-                            <div class="form-group">
-                                <label for="message">Mensaje</label>
-                                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block">Enviar</button>
-                        </form>
-                    <?php else: ?>
-                        <p class="text-center">Por favor, <a href="login/login.php">inicia sesión</a> para enviar un mensaje.</p>
-                    <?php endif; ?>
-                </div>
             </div>
         </section>
     </main>
@@ -196,7 +174,6 @@ include_once 'connectDB/connect.php';
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/cerrarSesion.js"></script>
-    <script src="js/contacto.js"></script>
 </body>
 
 </html>

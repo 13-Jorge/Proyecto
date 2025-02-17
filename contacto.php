@@ -50,23 +50,18 @@ include_once 'connectDB/connect.php';
     <main class="container mt-5">
         <h1 class="text-center mb-4">Contacto</h1>
         <div class="row">
-            <div class="col-md-12">
-                <p class="lead">Si tienes alguna pregunta o necesitas más información sobre nuestros servicios, no dudes en ponerte en contacto con nosotros. Estamos aquí para ayudarte.</p>
-                <form id="contactForm" method="post" action="enviarMensaje.php">
-                    <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" id="nombre" name="nombre" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="mensaje">Mensaje</label>
-                        <textarea id="mensaje" name="mensaje" class="form-control" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-                </form>
+            <div class="col-md-6 mx-auto">
+                <?php if (isset($_SESSION['user'])): ?>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+                    </form>
+                <?php else: ?>
+                    <p class="text-center">Por favor, <a href="login/login.php">inicia sesión</a> para enviar un mensaje.</p>
+                <?php endif; ?>
             </div>
         </div>
     </main>
@@ -89,4 +84,9 @@ include_once 'connectDB/connect.php';
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/cerrarSesion.js"></script>
+    <script src="js/contacto.js"></script>
+</body>
+</html>
