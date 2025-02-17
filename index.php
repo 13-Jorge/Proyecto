@@ -94,7 +94,7 @@ include_once 'connectDB/connect.php';
             <div class="container">
                 <h2 class="mb-4">Quiénes Somos</h2>
                 <p class="lead">En CM Gestión Inmobiliaria, nos dedicamos a una misión clara: vender tu propiedad en las mejores condiciones y en el menor tiempo posible. Nuestro equipo de expertos se especializa en guiarte a través de cada paso del proceso de venta, ofreciendo un servicio personalizado y de calidad. No somos simplemente agentes inmobiliarios; somos tus aliados estratégicos en el mercado inmobiliario, comprometidos a maximizar el valor de tu propiedad y a hacer que tu experiencia de venta sea lo más fluida y exitosa posible.</p>
-                <button class="btn btn-outline-light" onclick="window.location.href='contacto.php'">Contáctanos</button>
+                <div class="btn btn-light mt-3">Contáctanos</div>
             </div>
         </section>
 
