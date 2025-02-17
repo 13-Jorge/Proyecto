@@ -2,11 +2,17 @@
 include_once '../connectDB/connect.php';
 
 function obtenerVisitas() {
-    global $conn; 
-    $query = "SELECT * FROM visitas";
-    $result = mysqli_query($conn, $query);
-    $visitas = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    return $visitas;
+    $pdo = connectDB();
+    if ($pdo != null) {
+        $query = "SELECT v.id, p.titulo AS propiedad, l.nombre AS cliente, v.dias_preferencia AS fecha, v.rango_horas AS hora, v.comentarios
+                  FROM visitas v
+                  JOIN propiedades p ON v.propiedad_id = p.id
+                  JOIN login l ON v.cliente_id = l.user";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    return [];
 }
 
 $visitas = obtenerVisitas();
@@ -20,7 +26,7 @@ $visitas = obtenerVisitas();
             <th>Cliente</th>
             <th>Fecha</th>
             <th>Hora</th>
-            <th>Estado</th>
+            <th>Comentarios</th>
         </tr>
     </thead>
     <tbody>
@@ -31,7 +37,7 @@ $visitas = obtenerVisitas();
                 <td><?php echo htmlspecialchars($visita['cliente']); ?></td>
                 <td><?php echo htmlspecialchars($visita['fecha']); ?></td>
                 <td><?php echo htmlspecialchars($visita['hora']); ?></td>
-                <td><?php echo htmlspecialchars($visita['estado']); ?></td>
+                <td><?php echo htmlspecialchars($visita['comentarios']); ?></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
