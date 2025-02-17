@@ -10,7 +10,14 @@ if (!isset($_SESSION['user'])) {
 $autor = $_SESSION['user'];
 $mensaje = recogerValor('message');
 
-insertarNotificacion($autor, $mensaje);
 
-echo "Mensaje enviado correctamente";
+
+try {
+    insertarNotificacion($autor, $mensaje);
+    echo "Mensaje enviado correctamente";
+} catch (Exception $e) {
+    echo "Error al enviar el mensaje: " . $e->getMessage();
+}
+
+
 ?>
