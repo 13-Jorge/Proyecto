@@ -38,6 +38,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 .then(data => {
                     content.innerHTML = data;
                 });
+        } else if (section === 'visitas') {
+            fetch('fetchVisitas.php')
+                .then(response => response.text())
+                .then(data => {
+                    content.innerHTML = data;
+                });
         } else {
             content.innerHTML = `<h2>Sección de ${section}</h2><p>Contenido de la sección ${section} se cargará aquí.</p>`;
         }
