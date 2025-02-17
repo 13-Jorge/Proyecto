@@ -21,7 +21,7 @@ include_once 'connectDB/connect.php';
     <header>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="index.php">
                     <img src="img/logo.jpg" alt="CM Gestión Inmobiliaria" style="height: 60px;">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,10 +29,10 @@ include_once 'connectDB/connect.php';
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.php">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">Acerca de</a></li>
                         <li class="nav-item"><a class="nav-link" href="#services">Servicios</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonios</a></li>
+                        <li class="nav-item"><a class="nav-link" href="propiedades.php">Propiedades</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
                     </ul>
                     <div class="user-info d-flex align-items-center ml-3">
@@ -121,30 +121,6 @@ include_once 'connectDB/connect.php';
                                 <i class="<?php echo $service['icon']; ?> fa-3x mb-3 text-primary"></i>
                                 <h5 class="card-title"><?php echo htmlspecialchars($service['title']); ?></h5>
                                 <p class="card-text"><?php echo htmlspecialchars($service['desc']); ?></p>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </section>
-
-        <!-- Sección Testimonios -->
-        <section id="testimonials" class="testimonials mt-5">
-            <h2 class="text-center">Testimonios</h2>
-            <div class="row">
-                <?php
-                $testimonials = [
-                    ['text' => 'Excelente servicio, me ayudaron a vender mi casa rápidamente.', 'author' => 'Ana López'],
-                    ['text' => 'Muy profesionales, todo el proceso fue transparente y fácil.', 'author' => 'Pedro Martínez'],
-                    ['text' => 'Recomiendo CM Gestión Inmobiliaria, son los mejores.', 'author' => 'Laura Sánchez']
-                ];
-                foreach ($testimonials as $testimonial):
-                ?>
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <p class="card-text"><i class="fas fa-quote-left mr-2"></i><?php echo htmlspecialchars($testimonial['text']); ?></p>
-                                <h5 class="card-title text-right">- <?php echo htmlspecialchars($testimonial['author']); ?></h5>
                             </div>
                         </div>
                     </div>
