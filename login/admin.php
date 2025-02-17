@@ -28,6 +28,7 @@ $numNotificaciones = count(array_filter($notificaciones, function($notificacion)
     <script src="../js/admin.js"></script>
 </head>
 <body>
+    <?php include_once "../inludes/header.php"; ?>
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div class="bg-light border-right" id="sidebar-wrapper">
