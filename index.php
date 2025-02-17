@@ -1,24 +1,4 @@
-<?php
-session_start();
-include_once 'connectDB/connect.php';
-?>
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CM Gestión Inmobiliaria - Tu Socio en Bienes Raíces</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <script src="js/cerrarSesion.js"></script>
-    <link rel="stylesheet" href="styles/index.css">
-</head>
-
-<body>
-    <!-- Header con la barra de navegación -->
-    <header>
+<header>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="index.php">
@@ -51,7 +31,7 @@ include_once 'connectDB/connect.php';
 
     <!-- Carrusel mejorado -->
     <div id="mainCarousel" class="carousel slide" data-ride="carousel">
-        <ol class "carousel-indicators">
+        <ol class="carousel-indicators">
             <?php for ($i = 0; $i < 6; $i++): ?>
                 <li data-target="#mainCarousel" data-slide-to="<?php echo $i; ?>" <?php echo $i === 0 ? 'class="active"' : ''; ?>></li>
             <?php endfor; ?>
@@ -94,7 +74,7 @@ include_once 'connectDB/connect.php';
             <div class="container">
                 <h2 class="mb-4">Quiénes Somos</h2>
                 <p class="lead">En CM Gestión Inmobiliaria, nos dedicamos a una misión clara: vender tu propiedad en las mejores condiciones y en el menor tiempo posible. Nuestro equipo de expertos se especializa en guiarte a través de cada paso del proceso de venta, ofreciendo un servicio personalizado y de calidad. No somos simplemente agentes inmobiliarios; somos tus aliados estratégicos en el mercado inmobiliario, comprometidos a maximizar el valor de tu propiedad y a hacer que tu experiencia de venta sea lo más fluida y exitosa posible.</p>
-                <a href="contacto.php" class="btn btn-light mt-3">Contáctanos</a>
+                <a href="#contact" class="btn btn-light mt-3">Contáctanos</a>
             </div>
         </section>
 
@@ -127,6 +107,26 @@ include_once 'connectDB/connect.php';
                 <?php endforeach; ?>
             </div>
         </section>
+
+        <!-- Sección Contacto -->
+        <section id="contact" class="contact mt-5">
+            <h2 class="text-center">Contacto</h2>
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <?php if (isset($_SESSION['user'])): ?>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="message">Mensaje</label>
+                                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+                        </form>
+                    <?php else: ?>
+                        <p class="text-center">Por favor, <a href="login/login.php">inicia sesión</a> para enviar un mensaje.</p>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -149,7 +149,7 @@ include_once 'connectDB/connect.php';
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="js/cerrarSesion.js"></script>
+    <script src="js/contacto.js"></script>
 </body>
 
 </html>
