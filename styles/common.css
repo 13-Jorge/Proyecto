@@ -1,0 +1,105 @@
+:root {
+    --primary-color: #d4af37;
+    --secondary-color: #343a40;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-color);
+    color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 80px;
+}
+
+.navbar, .footer {
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand, .nav-link, .footer a {
+    color: var(--light-color) !important;
+    transition: color 0.3s ease;
+}
+
+.navbar-brand:hover, .nav-link:hover, .footer a:hover {
+    color: var(--dark-color) !important;
+}
+
+.navbar-brand img {
+    height: 60px;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+    padding: 10px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.footer {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    padding: 30px 0;
+    margin-top: auto;
+}
+
+.footer a {
+    color: var(--light-color);
+}
+
+.footer a:hover {
+    color: var(--dark-color);
+    text-decoration: none;
+}
+
+/* Section headers */
+.services h2, .testimonials h2, .contact h2 {
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 40px;
+}
+
+.services h2::after, .testimonials h2::after, .contact h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .carousel-item img {
+        height: 400px;
+    }
+}
