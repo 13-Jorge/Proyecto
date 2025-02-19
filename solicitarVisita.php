@@ -12,7 +12,7 @@ include_once 'connectDB/connect.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_blue.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_gold.css">
     <link rel="stylesheet" href="styles/common.css">
     <link rel="stylesheet" href="styles/solicitarVisita.css">
 </head>
@@ -43,14 +43,29 @@ include_once 'connectDB/connect.php';
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="dias_preferencia">Días preferidos del mes</label>
-                                        <input type="text" id="dias_preferencia" name="dias_preferencia" class="form-control" placeholder="Seleccione los días preferidos" required>
+                                        <label for="dias_preferencia">Días preferidos para la visita</label>
+                                        <input type="text" id="dias_preferencia" name="dias_preferencia" class="form-control" placeholder="Seleccione los días" required readonly>
+                                        <small class="form-text text-muted">Puede seleccionar varios días haciendo clic en el calendario</small>
                                     </div>
                                     <div class="form-group">
-                                        <label for="rango_horas">Rango de horas preferido</label>
-                                        <div class="d-flex">
-                                            <input type="text" id="hora_inicio" name="hora_inicio" class="form-control mr-2" placeholder="Hora inicio" required>
-                                            <input type="text" id="hora_fin" name="hora_fin" class="form-control" placeholder="Hora fin" required>
+                                        <label>Rango horario preferido</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="input-group mb-2">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="fas fa-clock"></i></span>
+                                                    </div>
+                                                    <input type="text" id="hora_inicio" name="hora_inicio" class="form-control" placeholder="Hora inicio" required readonly>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text"><i class="fas fa-clock"></i></span>
+                                                    </div>
+                                                    <input type="text" id="hora_fin" name="hora_fin" class="form-control" placeholder="Hora fin" required readonly>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -78,6 +93,7 @@ include_once 'connectDB/connect.php';
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
     <script src="js/cerrarSesion.js"></script>
     <script src="js/solicitarVisita.js"></script>
 </body>

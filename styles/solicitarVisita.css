@@ -1,98 +1,105 @@
 body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border: none;
+  padding: 12px 30px;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-control {
+  border-radius: 10px;
+  border: 1px solid #ced4da;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+}
+
+.flatpickr-calendar {
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange,
+.flatpickr-day.selected:focus,
+.flatpickr-day.startRange:focus,
+.flatpickr-day.endRange:focus,
+.flatpickr-day.selected:hover,
+.flatpickr-day.startRange:hover,
+.flatpickr-day.endRange:hover {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.flatpickr-time input:hover,
+.flatpickr-time .flatpickr-am-pm:hover,
+.flatpickr-time input:focus,
+.flatpickr-time .flatpickr-am-pm:focus {
+  background: #f3f3f3;
+}
+
+.input-group-text {
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .card-body {
+    padding: 2rem;
   }
-  
-  main {
-    flex: 1;
-  }
-  
-  .card {
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
-  }
-  
+
   .card-title {
-    color: var(--primary-color);
-    font-weight: 700;
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
-  
-  .btn-primary {
-    background-color: var(--primary-color);
-    border: none;
-    padding: 12px 30px;
-    font-size: 18px;
-    font-weight: 600;
-    transition: all 0.3s ease;
+
+  .row {
+    margin-left: -10px;
+    margin-right: -10px;
   }
-  
-  .btn-primary:hover {
-    background-color: var(--secondary-color);
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+  .col-md-6 {
+    padding-left: 10px;
+    padding-right: 10px;
   }
-  
-  .form-control {
-    border-radius: 10px;
-    border: 1px solid #ced4da;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .form-control:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
-  }
-  
-  .lead {
-    font-size: 1.25rem;
-  }
-  
-  /* Estilos para Flatpickr */
-  .flatpickr-day.selected,
-  .flatpickr-day.startRange,
-  .flatpickr-day.endRange,
-  .flatpickr-day.selected.inRange,
-  .flatpickr-day.startRange.inRange,
-  .flatpickr-day.endRange.inRange,
-  .flatpickr-day.selected:focus,
-  .flatpickr-day.startRange:focus,
-  .flatpickr-day.endRange:focus,
-  .flatpickr-day.selected:hover,
-  .flatpickr-day.startRange:hover,
-  .flatpickr-day.endRange:hover,
-  .flatpickr-day.selected.prevMonthDay,
-  .flatpickr-day.startRange.prevMonthDay,
-  .flatpickr-day.endRange.prevMonthDay,
-  .flatpickr-day.selected.nextMonthDay,
-  .flatpickr-day.startRange.nextMonthDay,
-  .flatpickr-day.endRange.nextMonthDay {
-    background: var(--primary-color);
-    border-color: var(--primary-color);
-  }
-  
-  .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n + 1)),
-  .flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n + 1)),
-  .flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n + 1)) {
-    box-shadow: -10px 0 0 var(--primary-color);
-  }
-  
-  @media (max-width: 768px) {
-    .card-body {
-      padding: 2rem;
-    }
-  
-    .card-title {
-      font-size: 2rem;
-    }
-  }
-  
-  
+}
+
