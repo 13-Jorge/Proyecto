@@ -22,7 +22,7 @@ if ($pdo != null) {
     <link rel="stylesheet" href="styles/common.css">
 </head>
 <body>
-    <?php include_once "./inludes/header.php"; ?>
+    <?php include_once "./includes/header.php"; ?>
 
     <main class="container my-4">
         <h1 class="text-center mb-4">Nuestras Propiedades</h1>
@@ -47,7 +47,7 @@ if ($pdo != null) {
         </div>
     </main>
 
-    <?php include_once "./inludes/footer.php"; ?>
+    <?php include_once "./includes/footer.php"; ?>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
