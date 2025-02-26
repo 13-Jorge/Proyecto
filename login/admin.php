@@ -41,11 +41,11 @@ $numNotificaciones = count(array_filter($notificaciones, function ($notificacion
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.php">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="propiedades.php">Propiedades</a></li>
-                        <li class="nav-item"><a class="nav-link" href="homestaging.php">Homestaging</a></li>
-                        <li class="nav-item"><a class="nav-link" href="solicitarVisita.php">Solicitar Visita</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contacto.php">Contacto</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../index.php">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../propiedades.php">Propiedades</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../homestaging.php">Homestaging</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../solicitarVisita.php">Solicitar Visita</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../contacto.php">Contacto</a></li>
                     </ul>
                     <div class="user-info d-flex align-items-center ml-3">
                         <?php if (isset($_SESSION['user'])): ?>
