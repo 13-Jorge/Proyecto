@@ -20,6 +20,7 @@ if ($pdo != null) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/propiedades.css">
 </head>
 <body>
     <?php include_once "./includes/header.php"; ?>
@@ -30,16 +31,36 @@ if ($pdo != null) {
             <?php foreach ($propiedades as $propiedad): ?>
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
-                        <?php if ($propiedad['imagen']): ?>
-                            <img src="data:image/jpeg;base64,<?php echo base64_encode($propiedad['imagen']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($propiedad['titulo']); ?>">
-                        <?php else: ?>
-                            <img src="img/default-property.jpg" class="card-img-top" alt="Imagen no disponible">
-                        <?php endif; ?>
+                        <!-- Mostramos la imagen fuera del collapse -->
+                        <div class="card-img-container">
+                            <?php if ($propiedad['imagen']): ?>
+                                <img src="data:image/jpeg;base64,<?php echo base64_encode($propiedad['imagen']); ?>" alt="<?php echo htmlspecialchars($propiedad['titulo']); ?>">
+                            <?php else: ?>
+                                <img src="img/default-property.jpg" alt="Imagen no disponible">
+                            <?php endif; ?>
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title"><?php echo htmlspecialchars($propiedad['titulo']); ?></h5>
-                            <p class="card-text"><?php echo htmlspecialchars(substr($propiedad['descripcion'], 0, 100)) . '...'; ?></p>
-                            <p class="card-text"><strong>Precio:</strong> €<?php echo number_format($propiedad['precio'], 2); ?></p>
-                            <a href="detallePropiedad.php?id=<?php echo $propiedad['id']; ?>" class="btn btn-primary">Ver Detalles</a>
+                            <p class="card-text property-price">€<?php echo number_format($propiedad['precio'], 2); ?></p>
+                            
+                            <button class="btn btn-gold btn-toggle collapsed" type="button" data-toggle="collapse" data-target="#collapse<?php echo $propiedad['id']; ?>" aria-expanded="false" aria-controls="collapse<?php echo $propiedad['id']; ?>">
+                                <span>Ver Detalles</span> 
+                                <i class="fas fa-chevron-down"></i>
+                                <i class="fas fa-chevron-up"></i>
+                            </button>
+                            
+                            <div class="collapse" id="collapse<?php echo $propiedad['id']; ?>">
+                                <div class="property-details mt-3">
+                                    <p class="card-text"><?php echo htmlspecialchars($propiedad['descripcion']); ?></p>
+                                    
+                                    <div class="property-features">
+                                        <p><strong>Direccion:</strong> <?php echo htmlspecialchars($propiedad['direccion']); ?></p>
+                                        <p><strong>Ciudad:</strong> <?php echo htmlspecialchars($propiedad['ciudad']); ?></p>
+                                        <p><strong>Código Postal:</strong> <?php echo htmlspecialchars($propiedad['codigo_postal']); ?></p>
+                                        <p><strong>Superficie:</strong> <?php echo htmlspecialchars($propiedad['superficie']); ?> m²</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -53,5 +74,6 @@ if ($pdo != null) {
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/cerrarSesion.js"></script>
+    <script src="js/propiedades.js"></script>
 </body>
 </html>

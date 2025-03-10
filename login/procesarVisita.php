@@ -10,9 +10,13 @@ if (!isset($_SESSION['user'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $propiedad_id = $_POST['propiedad'];
     $dias_preferencia = $_POST['dias_preferencia'];
-    $rango_horas = $_POST['rango_horas'];
+    $hora_inicio = $_POST['hora_inicio'];
+    $hora_fin = $_POST['hora_fin'];
     $comentarios = $_POST['comentarios'];
     $cliente_id = $_SESSION['user'];
+    
+    // Combine the start and end times into a single range string
+    $rango_horas = $hora_inicio . ' - ' . $hora_fin;
 
     $pdo = connectDB();
 
@@ -32,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $pdo->prepare("INSERT INTO visitas (propiedad_id, cliente_id, dias_preferencia, rango_horas, comentarios) VALUES (?, ?, ?, ?, ?)");
     $stmt->execute([$propiedad_id, $cliente_id, $dias_preferencia, $rango_horas, $comentarios]);
 
-    // Send notification to admin with detailed visit information
+    // Insert notification
     $mensaje = "Nueva solicitud de visita:\nPropiedad: $titulo_propiedad\nCliente: $email\nDías preferidos: $dias_preferencia\nRango de horas: $rango_horas\nComentarios: $comentarios";
     $stmt = $pdo->prepare("INSERT INTO notificaciones (autor, mensaje) VALUES (?, ?)");
     $stmt->execute([$cliente_id, $mensaje]);
