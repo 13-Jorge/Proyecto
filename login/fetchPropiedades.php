@@ -92,8 +92,7 @@ if ($pdo != null) {
                 <td><?php echo htmlspecialchars($propiedad['direccion']); ?></td>
                 <td><?php echo htmlspecialchars($propiedad['ciudad']); ?></td>
                 <td>
-                    <a href="editarPropiedad.php?id=<?php echo $propiedad['id']; ?>" class="btn btn-primary btn-sm">Editar</a>
-                    <a href="eliminarPropiedad.php?id=<?php echo $propiedad['id']; ?>" class="btn btn-danger btn-sm">Eliminar</a>
+                    <a href="editarPropiedad.php?id=<?php echo $propiedad['id']; ?>" class="btn btn-primary btn-sm">Gestionar</a>
                 </td>
             </tr>
         <?php endforeach; ?>

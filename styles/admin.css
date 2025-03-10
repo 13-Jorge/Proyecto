@@ -44,6 +44,31 @@
     margin-left: 0;
 }
 
+/* Sidebar logo */
+.sidebar-logo {
+    max-width: 90%;
+    height: auto;
+    padding: 5px 0;
+}
+
+/* Fix layout issues */
+body.admin-page {
+    padding-top: 0 !important; /* Override the padding-top from common.css */
+    min-height: 100vh;
+    display: flex;
+}
+
+#wrapper {
+    flex: 1;
+    display: flex;
+    width: 100%;
+}
+
+#page-content-wrapper {
+    padding-top: 0;
+    flex: 1;
+}
+
 /* Responsive adjustments */
 @media (max-width: 767px) {
     #sidebar-wrapper {
