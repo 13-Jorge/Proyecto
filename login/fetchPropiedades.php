@@ -72,6 +72,7 @@ if ($pdo != null) {
     <button type="submit" class="btn btn-primary">Añadir Propiedad</button>
 </form>
 <hr>
+<div class="table-responsive">
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -98,3 +99,5 @@ if ($pdo != null) {
         <?php endforeach; ?>
     </tbody>
 </table>
+
+</div>

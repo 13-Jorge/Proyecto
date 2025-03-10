@@ -66,18 +66,22 @@ body.admin-page {
     width: 100%;
 }
 
+/* Fix for content getting cut off on large screens */
 #page-content-wrapper {
-    padding-top: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 1rem;
     flex: 1;
     margin-left: 15rem; /* Espacio para el sidebar fijo */
+    min-width: 0; /* Crucial para evitar que el contenido se desborde */
     width: calc(100% - 15rem); /* Ancho ajustado para considerar el sidebar */
+    max-width: 100%; /* Asegurar que no exceda el ancho disponible */
+    overflow-x: hidden; /* Prevenir scroll horizontal */
 }
 
 /* Contenido del panel */
 #content {
     padding: 1rem;
+    width: 100%; /* Asegurar que el contenido ocupe todo el ancho disponible */
+    overflow-x: auto; /* Permitir scroll horizontal solo si es necesario */
 }
 
 /* Ocultar el botón de menú en pantallas grandes */
@@ -127,4 +131,15 @@ body.admin-page {
         padding-left: 0.5rem;
         padding-right: 0.5rem;
     }
+}
+
+/* Add responsive table styling */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Make sure form elements don't overflow */
+form {
+    max-width: 100%;
 }
