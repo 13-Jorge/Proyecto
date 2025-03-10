@@ -2,10 +2,16 @@
 #sidebar-wrapper {
     background-color: var(--secondary-color) !important;
     min-height: 100vh;
-    margin-left: -15rem;
     transition: margin .25s ease-out;
     display: flex;
     flex-direction: column;
+    margin-left: 0; /* Siempre visible en desktop */
+    width: 15rem; /* Ancho fijo para el sidebar */
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1000;
 }
 
 #sidebar-wrapper .sidebar-heading {
@@ -40,10 +46,6 @@
     color: var(--dark-color);
 }
 
-#wrapper.toggled #sidebar-wrapper {
-    margin-left: 0;
-}
-
 /* Sidebar logo */
 .sidebar-logo {
     max-width: 90%;
@@ -65,11 +67,47 @@ body.admin-page {
 }
 
 #page-content-wrapper {
-    padding-top: 0;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     flex: 1;
+    margin-left: 15rem; /* Espacio para el sidebar fijo */
+    width: calc(100% - 15rem); /* Ancho ajustado para considerar el sidebar */
+}
+
+/* Contenido del panel */
+#content {
+    padding: 1rem;
+}
+
+/* Ocultar el botón de menú en pantallas grandes */
+#menu-toggle, nav.navbar {
+    display: none;
 }
 
 /* Responsive adjustments */
+@media (max-width: 991px) {
+    /* Mostrar el botón de menú en tablets y móviles */
+    #menu-toggle, nav.navbar {
+        display: block;
+    }
+    
+    #sidebar-wrapper {
+        margin-left: -15rem;
+        position: fixed;
+        z-index: 1000;
+    }
+    
+    #page-content-wrapper {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: 0;
+    }
+}
+
 @media (max-width: 767px) {
     #sidebar-wrapper {
         margin-left: -100%;
@@ -83,5 +121,10 @@ body.admin-page {
     
     .logout-container {
         padding: 0.75rem;
+    }
+    
+    #page-content-wrapper {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
     }
 }
