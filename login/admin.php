@@ -24,14 +24,14 @@ $numNotificaciones = count(array_filter($notificaciones, function ($notificacion
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="../styles/admin.css">
     <script src="../js/cerrarSesion.js"></script>
-    <script src="../js/admin.js"></script>
 </head>
 
 <body class="admin-page">
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
-        <div class="bg-light border-right" id="sidebar-wrapper">
+        <div id="sidebar-wrapper">
             <div class="sidebar-heading">CM Gestión Inmobiliaria</div>
             <div class="list-group list-group-flush">
                 <a href="#" class="list-group-item list-group-item-action" data-section="usuarios">
@@ -53,12 +53,20 @@ $numNotificaciones = count(array_filter($notificaciones, function ($notificacion
                     <?php endif; ?>
                 </a>
             </div>
+            <!-- Logout button at the bottom -->
+            <div class="logout-container">
+                <button class="btn btn-outline-light" onclick="cerrarSesion()">
+                    <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
+                </button>
+            </div>
         </div>
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom mt-3">
-                <button class="btn btn-primary" id="menu-toggle">Menu</button>
+                <button class="btn btn-primary" id="menu-toggle">
+                    <i class="fas fa-bars"></i> Menu
+                </button>
             </nav>
 
             <div class="container-fluid mt-4">
@@ -73,6 +81,7 @@ $numNotificaciones = count(array_filter($notificaciones, function ($notificacion
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../js/admin.js"></script>
 </body>
 
 </html>
