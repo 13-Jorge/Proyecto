@@ -1,11 +1,24 @@
+/* ==== VARIABLES GLOBALES ==== */
 :root {
     --primary-color: #d4af37;
+    --primary-light: #e6c966;
+    --primary-dark: #b3951f;
     --secondary-color: #343a40;
+    --secondary-light: #495057;
     --light-color: #f8f9fa;
     --dark-color: #212529;
-}
-
-body {
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 6px 25px rgba(0, 0, 0, 0.15);
+    --border-radius-sm: 5px;
+    --border-radius-md: 10px;
+    --border-radius-lg: 15px;
+    --transition-fast: all 0.2s ease;
+    --transition-normal: all 0.3s ease;
+  }
+  
+  /* ==== ESTILOS BASE ==== */
+  body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--light-color);
     color: var(--secondary-color);
@@ -13,81 +26,224 @@ body {
     flex-direction: column;
     min-height: 100vh;
     padding-top: 80px;
-}
-
-.navbar, .footer {
-    background-color: var(--primary-color);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-brand, .nav-link, .footer a {
-    color: var(--light-color) !important;
-    transition: color 0.3s ease;
-}
-
-.navbar-brand:hover, .nav-link:hover, .footer a:hover {
-    color: var(--dark-color) !important;
-}
-
-.navbar-brand img {
-    height: 60px;
-}
-
-main {
-    flex: 1 0 auto;
-}
-
-.card {
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-.btn-primary {
-    background-color: var(--primary-color);
-    border: none;
-    padding: 10px 25px;
+    overflow-x: hidden;
     font-size: 16px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-    background-color: var(--secondary-color);
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.footer {
+    line-height: 1.6;
+  }
+  
+  main {
+    flex: 1 0 auto;
+    padding: 2rem 0;
+  }
+  
+  /* ==== NAVEGACIÓN Y FOOTER ==== */
+  .navbar, .footer {
+    background-color: var(--primary-color);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 0.5rem 1rem;
+  }
+  
+  .navbar-brand, .nav-link, .footer a {
+    color: var(--light-color) !important;
+    transition: var(--transition-normal);
+  }
+  
+  .navbar-brand:hover, .nav-link:hover, .footer a:hover {
+    color: var(--dark-color) !important;
+    transform: translateY(-2px);
+  }
+  
+  .navbar-brand img {
+    height: 60px;
+    transition: var(--transition-normal);
+  }
+  
+  .navbar-toggler {
+    border-color: var(--light-color);
+  }
+  
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(248, 249, 250, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+  
+  .navbar-collapse {
+    transition: var(--transition-normal);
+  }
+  
+  .footer {
     background-color: var(--primary-color);
     color: var(--light-color);
-    padding: 30px 0;
+    padding: 2rem 0;
     margin-top: auto;
-}
-
-.footer a {
+  }
+  
+  .footer h5 {
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+  
+  .footer ul {
+    padding-left: 0;
+    list-style: none;
+  }
+  
+  .footer ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer a {
     color: var(--light-color);
-}
-
-.footer a:hover {
+    transition: var(--transition-normal);
+  }
+  
+  .footer a:hover {
     color: var(--dark-color);
     text-decoration: none;
-}
-
-/* Section headers */
-.services h2, .testimonials h2, .contact h2 {
+    transform: translateX(5px);
+  }
+  
+  .social-icons a {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 1.5rem;
+  }
+  
+  /* ==== BOTONES ==== */
+  .btn-primary, .btn-gold {
+    background-color: var(--primary-color);
+    border: none;
+    color: var(--light-color);
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-normal);
+  }
+  
+  .btn-primary:hover, .btn-gold:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    color: var(--light-color);
+  }
+  
+  .btn:focus, .btn:active {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+  }
+  
+  /* ==== CARDS Y CONTENEDORES ==== */
+  .card {
+    border: none;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-normal);
+    margin-bottom: 2rem;
+    overflow: hidden;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .card-title {
+    color: var(--primary-color);
+    font-weight: 700;
+  }
+  
+  .card-header {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    font-weight: 600;
+    border-bottom: none;
+  }
+  
+  .card-header .btn-link {
+    color: var(--light-color);
+    text-decoration: none;
+    width: 100%;
+    text-align: left;
+    font-weight: 600;
+  }
+  
+  .card-header .btn-link:hover,
+  .card-header .btn-link:focus {
+    color: var(--dark-color);
+    text-decoration: none;
+  }
+  
+  .card-img-container {
+    height: 220px;
+    overflow: hidden;
+  }
+  
+  .card-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-normal);
+  }
+  
+  .card:hover .card-img-container img {
+    transform: scale(1.05);
+  }
+  
+  /* ==== FORMULARIOS ==== */
+  .form-control {
+    border-radius: var(--border-radius-md);
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    transition: var(--transition-normal);
+  }
+  
+  .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(212, 175, 55, 0.25);
+  }
+  
+  textarea.form-control {
+    resize: vertical;
+    min-height: 150px;
+  }
+  
+  .input-group-text {
+    background-color: var(--primary-color);
+    border: none;
+    color: var(--light-color);
+    border-radius: var(--border-radius-md);
+  }
+  
+  /* ==== SECCIONES ESPECÍFICAS ==== */
+  /* Home */
+  .carousel-item img {
+    height: 600px;
+    object-fit: cover;
+  }
+  
+  .carousel-caption {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 1.5rem;
+    border-radius: var(--border-radius-md);
+    bottom: 2rem;
+  }
+  
+  .services h2, .testimonials h2, .contact h2 {
     position: relative;
     padding-bottom: 15px;
     margin-bottom: 40px;
-}
-
-.services h2::after, .testimonials h2::after, .contact h2::after {
+    text-align: center;
+  }
+  
+  .services h2::after, .testimonials h2::after, .contact h2::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -96,10 +252,462 @@ main {
     width: 50px;
     height: 3px;
     background-color: var(--primary-color);
-}
-
-@media (max-width: 768px) {
-    .carousel-item img {
-        height: 400px;
+  }
+  
+  /* Hero section para Home Staging */
+  .hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/homestaging-hero.jpg") no-repeat center center;
+    background-size: cover;
+    color: var(--light-color);
+    padding: 100px 0;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  
+  .hero-section h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-section p {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+  }
+  
+  /* Propiedades */
+  .property-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+  }
+  
+  .property-details.show {
+    max-height: 500px;
+  }
+  
+  .property-features {
+    background-color: var(--light-color);
+    padding: 15px;
+    border-radius: var(--border-radius-md);
+    margin-top: 15px;
+    border-left: 3px solid var(--primary-color);
+  }
+  
+  .property-price {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    font-weight: bold;
+  }
+  
+  .btn-toggle {
+    width: 100%;
+    margin-top: 15px;
+    text-align: left;
+    position: relative;
+  }
+  
+  .btn-toggle .fa-chevron-down,
+  .btn-toggle.collapsed .fa-chevron-up {
+    display: none;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .btn-toggle.collapsed .fa-chevron-down {
+    display: inline-block;
+  }
+  
+  .btn-toggle .fa-chevron-up {
+    display: inline-block;
+  }
+  
+  /* Admin sidebar */
+  #sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -15rem;
+    transition: margin .25s ease-out;
+    background-color: var(--secondary-color);
+  }
+  
+  #sidebar-wrapper .sidebar-heading {
+    padding: 1rem 1.25rem;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+  }
+  
+  #sidebar-wrapper .list-group {
+    width: 15rem;
+  }
+  
+  .list-group-item {
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+    border: none;
+    padding: 0.75rem 1.25rem;
+    transition: var(--transition-normal);
+  }
+  
+  .list-group-item:hover, .list-group-item.active {
+    background-color: var(--primary-color);
+    color: var(--dark-color);
+  }
+  
+  #page-content-wrapper {
+    min-width: 100vw;
+  }
+  
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+  }
+  
+  /* Before-After Slider para Home Staging */
+  .before-after-wrapper {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 30px;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .before-after-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+  }
+  
+  .before-after-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .before-image {
+    z-index: 1;
+  }
+  
+  .after-image {
+    z-index: 2;
+    clip-path: inset(0 0 0 50%);
+  }
+  
+  .before-after-slider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background: white;
+    z-index: 3;
+    cursor: ew-resize;
+  }
+  
+  .before-after-slider::before {
+    content: "⇔";
+    color: white;
+    background-color: var(--primary-color);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 12px;
+    border-radius: 50%;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  /* Benefit icons para Home Staging */
+  .benefit-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    transition: var(--transition-normal);
+  }
+  
+  .service-card:hover .benefit-icon {
+    transform: scale(1.2);
+  }
+  
+  /* ==== ESTILOS ESPECÍFICOS PARA ADMIN ==== */
+  /* Add these styles for the admin page */
+  body.admin-page {
+    /* Increase padding-top to accommodate both navbars */
+    padding-top: 100px;
+  }
+  
+  #page-content-wrapper .navbar {
+    z-index: 100; /* Lower than the main navbar */
+    position: relative;
+  }
+  
+  /* Make sure the toggle button is visible */
+  #menu-toggle {
+    z-index: 101;
+  }
+  
+  /* Adjust sidebar position */
+  #sidebar-wrapper {
+    margin-top: 0;
+    padding-top: 0;
+    z-index: 99;
+  }
+  
+  /* ==== MEDIA QUERIES ==== */
+  /* Tablet (768px - 991px) */
+  @media (min-width: 768px) and (max-width: 991px) {
+    body {
+      font-size: 15px;
     }
-}
+    
+    .navbar-brand img {
+      height: 50px;
+    }
+    
+    .carousel-item img {
+      height: 450px;
+    }
+    
+    .carousel-caption {
+      padding: 1rem;
+    }
+    
+    .card-img-container {
+      height: 180px;
+    }
+    
+    .hero-section {
+      padding: 80px 0;
+    }
+    
+    .hero-section h1 {
+      font-size: 2.5rem;
+    }
+    
+    .card-title {
+      font-size: 2rem;
+    }
+    
+    .benefit-icon {
+      font-size: 2.2rem;
+    }
+    
+    .before-after-container {
+      height: 350px;
+    }
+    
+    .btn-primary, .btn-gold {
+      padding: 0.6rem 1.2rem;
+    }
+    
+    #sidebar-wrapper {
+      margin-left: 0;
+    }
+    
+    #page-content-wrapper {
+      min-width: 0;
+      width: 100%;
+    }
+    
+    #wrapper.toggled #sidebar-wrapper {
+      margin-left: -15rem;
+    }
+    
+    /* Admin specific */
+    body.admin-page {
+      padding-top: 90px;
+    }
+  }
+  
+  /* Mobile (hasta 767px) */
+  @media (max-width: 767px) {
+    body {
+      font-size: 14px;
+      padding-top: 70px;
+    }
+    
+    .navbar-brand img {
+      height: 40px;
+    }
+    
+    main {
+      padding: 1rem 0;
+    }
+    
+    .carousel-item img {
+      height: 300px;
+    }
+    
+    .carousel-caption {
+      bottom: 1rem;
+      padding: 0.8rem;
+    }
+    
+    .carousel-caption h1 {
+      font-size: 1.5rem;
+    }
+    
+    .carousel-caption p {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .services h2, .testimonials h2, .contact h2 {
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+    }
+    
+    .card {
+      margin-bottom: 1.5rem;
+    }
+    
+    .card-img-container {
+      height: 160px;
+    }
+    
+    .card-title {
+      font-size: 1.7rem;
+    }
+    
+    .hero-section {
+      padding: 60px 0;
+    }
+    
+    .hero-section h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .hero-section p {
+      font-size: 1rem;
+    }
+    
+    .benefit-icon {
+      font-size: 2rem;
+    }
+    
+    .before-after-container {
+      height: 250px;
+    }
+    
+    .before-after-slider::before {
+      padding: 8px;
+      font-size: 14px;
+    }
+    
+    .btn-primary, .btn-gold {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+    }
+    
+    .footer {
+      padding: 1.5rem 0;
+      text-align: center;
+    }
+    
+    .footer h5 {
+      margin-top: 1.5rem;
+    }
+    
+    .social-icons {
+      margin-top: 1rem;
+    }
+    
+    .social-icons a {
+      margin: 0 10px;
+    }
+    
+    /* Admin sidebar responsivo para móvil */
+    #sidebar-wrapper {
+      margin-left: -100%;
+      width: 80%;
+    }
+    
+    #sidebar-wrapper .list-group {
+      width: 100%;
+    }
+    
+    #wrapper.toggled #sidebar-wrapper {
+      margin-left: 0;
+      width: 80%;
+    }
+    
+    #page-content-wrapper {
+      width: 100%;
+    }
+    
+    .property-price {
+      font-size: 1.1rem;
+    }
+    
+    .property-features {
+      padding: 10px;
+    }
+    
+    textarea.form-control {
+      min-height: 120px;
+    }
+    
+    /* Admin specific */
+    body.admin-page {
+      padding-top: 80px;
+    }
+    
+    /* Fix para el padding y márgenes en mobile */
+    .container {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    
+    .row {
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+    
+    .col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
+    .col-7, .col-8, .col-9, .col-10, .col-11, .col-12,
+    .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6,
+    .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+  
+  /* Mobile pequeño (hasta 575px) */
+  @media (max-width: 575px) {
+    .carousel-item img {
+      height: 250px;
+    }
+    
+    .card-img-container {
+      height: 140px;
+    }
+    
+    .hero-section {
+      padding: 40px 0;
+    }
+    
+    .hero-section h1 {
+      font-size: 1.7rem;
+    }
+    
+    .before-after-container {
+      height: 200px;
+    }
+    
+    .card-title {
+      font-size: 1.5rem;
+    }
+    
+    /* Admin específico en móviles pequeños */
+    body.admin-page {
+      padding-top: 70px;
+    }
+  }

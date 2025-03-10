@@ -9,7 +9,7 @@ include_once '../connectDB/connect.php';
     <title>Registro - CM Gestión Inmobiliaria</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/login.css">
+    <link rel="stylesheet" href="../styles/comon.css">
     <script src="../js/alta.js"></script>
 </head>
 <body class="d-flex justify-content-center align-items-center vh-100">

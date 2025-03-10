@@ -6,7 +6,7 @@
     <title>Iniciar Sesión - CM Gestión Inmobiliaria</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/login.css">
+    <link rel="stylesheet" href="../styles/common.css">
     <script src="../js/login.js"></script>
 </head>
 <body class="d-flex justify-content-center align-items-center vh-100">

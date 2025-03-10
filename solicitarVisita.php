@@ -14,7 +14,6 @@ include_once 'connectDB/connect.php';
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_gold.css">
     <link rel="stylesheet" href="styles/common.css">
-    <link rel="stylesheet" href="styles/solicitarVisita.css">
 </head>
 <body>
     <?php include_once "./includes/header.php"; ?>

@@ -24,16 +24,15 @@ $numNotificaciones = count(array_filter($notificaciones, function ($notificacion
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="../styles/common.css">
-    <link rel="stylesheet" href="../styles/admin.css">
     <script src="../js/cerrarSesion.js"></script>
     <script src="../js/admin.js"></script>
 </head>
 
-<body>
+<body class="admin-page">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="index.php">
+                <a class="navbar-brand" href="../index.php">
                     <img src="../img/logo.jpg" alt="CM Gestión Inmobiliaria">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -88,13 +87,11 @@ $numNotificaciones = count(array_filter($notificaciones, function ($notificacion
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom mt-3">
                 <button class="btn btn-primary" id="menu-toggle">Menu</button>
             </nav>
 
             <div class="container-fluid mt-4">
-                <h1 class="mt-4 mb-4">Panel de Administración</h1>
-
                 <!-- Contenido dinámico -->
                 <div id="content">
                     <!-- El contenido se cargará dinámicamente aquí -->
