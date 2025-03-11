@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const content = document.getElementById('content');
     const menuToggle = document.getElementById('menu-toggle');
     const wrapper = document.getElementById('wrapper');
-    
+    const closeSidebarBtn = document.getElementById('close-sidebar');
+
     // Función para comprobar si estamos en un dispositivo móvil/tablet
     function isMobileOrTablet() {
         return window.innerWidth <= 991;
@@ -16,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.classList.add('active');
             const section = this.getAttribute('data-section');
             loadSection(section);
-            
+
             // Si estamos en móvil/tablet, replegar el sidebar al seleccionar una sección
             if (isMobileOrTablet()) {
                 wrapper.classList.remove('toggled');
@@ -28,6 +29,14 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         wrapper.classList.toggle('toggled');
     });
+
+    // Event listener para el botón de cierre del sidebar
+    if (closeSidebarBtn) {
+        closeSidebarBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            wrapper.classList.remove('toggled');
+        });
+    }
 
     function loadSection(section) {
         if (section === 'notificaciones') {
@@ -70,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Cargar la sección de usuarios por defecto
     loadSection('usuarios');
-    
+
     // Ajustar cuando se redimensiona la ventana
     window.addEventListener('resize', function() {
         if (!isMobileOrTablet()) {

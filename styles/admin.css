@@ -19,6 +19,9 @@
     font-size: 1.2rem;
     color: var(--primary-color);
     background-color: var(--secondary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #sidebar-wrapper .list-group {
@@ -109,6 +112,16 @@ body.admin-page {
     
     #wrapper.toggled #sidebar-wrapper {
         margin-left: 0;
+    }
+
+    /* Estilos para el botón de cierre en dispositivos móviles */
+    #close-sidebar {
+        display: block;
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        background: none;
+        border: none;
+        cursor: pointer;
     }
 }
 

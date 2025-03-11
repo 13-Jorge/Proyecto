@@ -32,6 +32,9 @@ $numNotificaciones = count(array_filter($notificaciones, function ($notificacion
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
+            <button class="close-btn" id="close-sidebar">
+                <i class="fas fa-times"></i>
+            </button>
             <a class="sidebar-heading" href="../index.php">
                 <img src="../img/logo.jpg" alt="CM Gestión Inmobiliaria" class="sidebar-logo">
             </a>
