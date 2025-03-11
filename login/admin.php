@@ -25,6 +25,7 @@ $numNotificaciones = count(array_filter($notificaciones, function ($notificacion
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="../styles/common.css">
     <link rel="stylesheet" href="../styles/admin.css">
+    <link rel="stylesheet" href="../styles/inicio-admin.css">
     <script src="../js/cerrarSesion.js"></script>
 </head>
 
@@ -39,6 +40,9 @@ $numNotificaciones = count(array_filter($notificaciones, function ($notificacion
                 <img src="../img/logo.jpg" alt="CM Gestión Inmobiliaria" class="sidebar-logo">
             </a>
             <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action active" data-section="inicio">
+                    <i class="fas fa-tachometer-alt mr-2"></i>Inicio
+                </a>
                 <a href="#" class="list-group-item list-group-item-action" data-section="usuarios">
                     <i class="fas fa-users mr-2"></i>Gestión de Usuarios
                 </a>

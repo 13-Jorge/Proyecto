@@ -1,0 +1,148 @@
+/* Estilos para la sección de inicio en el panel de administración */
+.inicio-container {
+    padding: 1.5rem;
+}
+
+.welcome-section {
+    background-color: var(--primary-color);
+    color: var(--dark-color);
+    border-radius: var(--border-radius-lg);
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+}
+
+.welcome-section h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.welcome-section p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.stats-row .card {
+    border-radius: var(--border-radius-md);
+    border-left: 4px solid var(--primary-color);
+    transition: var(--transition-normal);
+}
+
+.stats-row .card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.stats-row .counter {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.stats-row .text-primary {
+    color: var(--primary-color) !important;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+
+.central-logo {
+    max-width: 300px;
+    height: auto;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+    transition: var(--transition-normal);
+    transform-origin: center;
+}
+
+.central-logo:hover {
+    transform: scale(1.05);
+}
+
+.quick-actions-container {
+    background-color: var(--light-color);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.quick-actions-container h2 {
+    color: var(--primary-color);
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.quick-actions-container h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+.btn-gold {
+    background-color: var(--primary-color);
+    color: var(--dark-color);
+    font-weight: 600;
+    padding: 1rem;
+    transition: var(--transition-normal);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-gold:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .welcome-section h1 {
+        font-size: 2.2rem;
+    }
+    
+    .stats-row .counter {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .welcome-section {
+        padding: 2rem;
+    }
+    
+    .welcome-section h1 {
+        font-size: 1.8rem;
+    }
+    
+    .welcome-section p {
+        font-size: 1rem;
+    }
+    
+    .stats-row .counter {
+        font-size: 1.8rem;
+    }
+    
+    .quick-actions-container {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .welcome-section h1 {
+        font-size: 1.5rem;
+    }
+    
+    .central-logo {
+        max-width: 200px;
+    }
+}

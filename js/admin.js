@@ -39,7 +39,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function loadSection(section) {
-        if (section === 'notificaciones') {
+        if (section === 'inicio') {
+            fetch('fetchInicio.php')
+                .then(response => response.text())
+                .then(data => {
+                    content.innerHTML = data;
+                });
+        } else if (section === 'notificaciones') {
             fetch('fetchNotificaciones.php')
                 .then(response => response.text())
                 .then(data => {
@@ -78,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Cargar la sección de usuarios por defecto
-    loadSection('usuarios');
+    loadSection('inicio');
 
     // Ajustar cuando se redimensiona la ventana
     window.addEventListener('resize', function() {
