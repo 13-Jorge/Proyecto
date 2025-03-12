@@ -159,6 +159,18 @@ body.admin-page {
     -webkit-overflow-scrolling: touch;
 }
 
+/* Mostrar todas las columnas por defecto en pantallas grandes */
+.descripcion-columna {
+    display: table-cell;
+}
+
+/* Ocultar la columna de descripción en pantallas medianas y pequeñas */
+@media (max-width: 991px) {
+    .descripcion-columna {
+        display: none;
+    }
+}
+
 /* Make sure form elements don't overflow */
 form {
     max-width: 100%;

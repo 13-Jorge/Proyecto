@@ -79,7 +79,7 @@ if ($pdo != null) {
         <thead>
             <tr>
                 <th>Título</th>
-                <th>Descripción</th>
+                <th class="descripcion-columna">Descripción</th>
                 <th style="width: 150px;">Precio</th>
                 <th>Dirección</th>
                 <th>Ciudad</th>
@@ -90,14 +90,13 @@ if ($pdo != null) {
             <?php foreach ($propiedades as $propiedad): ?>
                 <tr>
                     <td><?php echo htmlspecialchars($propiedad['titulo']); ?></td>
-                    <td><?php echo htmlspecialchars($propiedad['descripcion']); ?></td>
+                    <td class="descripcion-columna"><?php echo htmlspecialchars($propiedad['descripcion']); ?></td>
                     <td>
                         <?php
                         $precioFormateado = strpos($propiedad['precio'], '.') !== false ? rtrim(rtrim($propiedad['precio'], '0'), '.') : $propiedad['precio'];
                         echo htmlspecialchars($precioFormateado) . ' €';
                         ?>
                     </td>
-
                     <td><?php echo htmlspecialchars($propiedad['direccion']); ?></td>
                     <td><?php echo htmlspecialchars($propiedad['ciudad']); ?></td>
                     <td>
