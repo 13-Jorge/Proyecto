@@ -14,6 +14,8 @@ if ($pdo != null) {
     $resul = $pdo->query($consulta);
     $propiedades = $resul->fetchAll(PDO::FETCH_ASSOC);
 }
+
+
 ?>
 <h2>Gestión de Propiedades</h2>
 <form id="addPropertyForm" method="post" enctype="multipart/form-data" action="insertarPropiedad.php">
@@ -73,31 +75,37 @@ if ($pdo != null) {
 </form>
 <hr>
 <div class="table-responsive">
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Título</th>
-            <th>Descripción</th>
-            <th>Precio</th>
-            <th>Dirección</th>
-            <th>Ciudad</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($propiedades as $propiedad): ?>
+    <table class="table table-bordered">
+        <thead>
             <tr>
-                <td><?php echo htmlspecialchars($propiedad['titulo']); ?></td>
-                <td><?php echo htmlspecialchars($propiedad['descripcion']); ?></td>
-                <td><?php echo htmlspecialchars($propiedad['precio']); ?> €</td>
-                <td><?php echo htmlspecialchars($propiedad['direccion']); ?></td>
-                <td><?php echo htmlspecialchars($propiedad['ciudad']); ?></td>
-                <td>
-                    <a href="editarPropiedad.php?id=<?php echo $propiedad['id']; ?>" class="btn btn-primary btn-sm">Gestionar</a>
-                </td>
+                <th>Título</th>
+                <th>Descripción</th>
+                <th style="width: 150px;">Precio</th>
+                <th>Dirección</th>
+                <th>Ciudad</th>
+                <th>Acciones</th>
             </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <?php foreach ($propiedades as $propiedad): ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($propiedad['titulo']); ?></td>
+                    <td><?php echo htmlspecialchars($propiedad['descripcion']); ?></td>
+                    <td>
+                        <?php
+                        $precioFormateado = strpos($propiedad['precio'], '.') !== false ? rtrim(rtrim($propiedad['precio'], '0'), '.') : $propiedad['precio'];
+                        echo htmlspecialchars($precioFormateado) . ' €';
+                        ?>
+                    </td>
+
+                    <td><?php echo htmlspecialchars($propiedad['direccion']); ?></td>
+                    <td><?php echo htmlspecialchars($propiedad['ciudad']); ?></td>
+                    <td>
+                        <a href="editarPropiedad.php?id=<?php echo $propiedad['id']; ?>" class="btn btn-primary btn-sm">Gestionar</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 
 </div>

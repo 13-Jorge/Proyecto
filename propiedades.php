@@ -25,11 +25,10 @@ if ($pdo != null) {
     <?php include_once "./includes/header.php"; ?>
 
     <main class="container my-4">
-        <h1 class="text-center mb-4">Nuestras Propiedades</h1>
         <div class="row">
             <?php foreach ($propiedades as $propiedad): ?>
                 <div class="col-md-4 mb-4">
-                    <div class="card h-100">
+                    <div class="card">
                         <!-- Mostramos la imagen fuera del collapse -->
                         <div class="card-img-container">
                             <?php if ($propiedad['imagen']): ?>
@@ -40,7 +39,7 @@ if ($pdo != null) {
                         </div>
                         <div class="card-body">
                             <h5 class="card-title"><?php echo htmlspecialchars($propiedad['titulo']); ?></h5>
-                            <p class="card-text property-price">€<?php echo number_format($propiedad['precio'], 2); ?></p>
+                            <p class="card-text property-price"><?php echo number_format($propiedad['precio'], 0, ',', '.'); ?>€</p>
                             
                             <button class="btn btn-gold btn-toggle collapsed" type="button" data-toggle="collapse" data-target="#collapse<?php echo $propiedad['id']; ?>" aria-expanded="false" aria-controls="collapse<?php echo $propiedad['id']; ?>">
                                 <span>Ver Detalles</span> 
