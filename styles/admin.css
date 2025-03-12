@@ -164,10 +164,18 @@ body.admin-page {
     display: table-cell;
 }
 
+.precio-columna {
+    width: 150px;
+}
+
 /* Ocultar la columna de descripción en pantallas medianas y pequeñas */
 @media (max-width: 991px) {
     .descripcion-columna {
         display: none;
+    }
+
+    .precio-columna {
+        width: 150px;
     }
 }
 
