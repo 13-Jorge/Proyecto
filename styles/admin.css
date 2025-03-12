@@ -168,18 +168,25 @@ body.admin-page {
     width: 150px;
 }
 
-/* Ocultar la columna de descripción en pantallas medianas y pequeñas */
 @media (max-width: 991px) {
     .descripcion-columna {
         display: none;
     }
 
+    
     .precio-columna {
-        width: 150px;
+        width: 180px; 
     }
 }
 
-/* Make sure form elements don't overflow */
+
+@media (max-width: 767px) {
+    .precio-columna {
+        width: 200px; 
+    }
+}
+
+
 form {
     max-width: 100%;
 }
