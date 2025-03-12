@@ -14,7 +14,8 @@ $notificaciones = obtenerNotificaciones();
     <?php foreach ($notificaciones as $notificacion): ?>
         <li class="list-group-item <?php echo $notificacion['leido'] ? 'list-group-item-secondary' : ''; ?>">
             <strong>Email:</strong> <?php echo htmlspecialchars($notificacion['email']); ?><br>
-            <strong>Mensaje:</strong> <?php echo htmlspecialchars($notificacion['mensaje']); ?>
+            <strong>Fecha:</strong> <?php echo htmlspecialchars($notificacion['fecha']); ?><br>
+            <strong>Mensaje:</strong> <br><?php echo $notificacion['mensaje']; ?>
             <?php if (!$notificacion['leido']): ?>
                 <a href="marcarLeido.php?id=<?php echo $notificacion['id']; ?>" class="btn btn-sm btn-primary float-right">Marcar como leído</a>
             <?php endif; ?>

@@ -37,7 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute([$propiedad_id, $cliente_id, $dias_preferencia, $rango_horas, $comentarios]);
 
     // Insert notification
-    $mensaje = "Nueva solicitud de visita:\nPropiedad: $titulo_propiedad\nCliente: $email\nDías preferidos: $dias_preferencia\nRango de horas: $rango_horas\nComentarios: $comentarios";
+    $mensaje = "Nueva solicitud de visita para $titulo_propiedad durante los días $dias_preferencia en el horario $rango_horas.
+                <br><strong>Comentarios:</strong> $comentarios";
     $stmt = $pdo->prepare("INSERT INTO notificaciones (autor, mensaje) VALUES (?, ?)");
     $stmt->execute([$cliente_id, $mensaje]);
 
