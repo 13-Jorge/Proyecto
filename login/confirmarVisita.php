@@ -5,7 +5,7 @@ function obtenerVisitaSolicitada($id)
 {
     $pdo = connectDB();
     if ($pdo != null) {
-        $query = "SELECT v.id, p.titulo AS propiedad, p.id AS propiedad_id, l.nombre AS cliente, v.dias_preferencia AS fecha, v.rango_horas AS hora, v.comentarios
+        $query = "SELECT v.id, p.titulo AS propiedad, p.id AS propiedad_id, l.user AS cliente, v.dias_preferencia AS fecha, v.rango_horas AS hora, v.comentarios
                   FROM visitasSolicitadas v
                   JOIN propiedades p ON v.propiedad_id = p.id
                   JOIN login l ON v.cliente_id = l.user
@@ -40,19 +40,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $pdo = connectDB();
     if ($pdo != null) {
-        $query = "INSERT INTO visitasConfirmadas (id_solicitud, cliente, agente, propiedad, fecha, horario)
-                  VALUES (:id_solicitud, :cliente, :agente, :propiedad, :fecha, :horario)";
-        $stmt = $pdo->prepare($query);
-        $stmt->bindParam(':id_solicitud', $id);
-        $stmt->bindParam(':cliente', $cliente);
-        $stmt->bindParam(':agente', $agente);
-        $stmt->bindParam(':propiedad', $propiedad);
-        $stmt->bindParam(':fecha', $fecha);
-        $stmt->bindParam(':horario', $horario);
-        $stmt->execute();
+        try {
+            $query = "INSERT INTO visitasConfirmadas (id_solicitud, cliente, agente, propiedad, fecha, horario)
+                      VALUES (:id_solicitud, :cliente, :agente, :propiedad, :fecha, :horario)";
+            $stmt = $pdo->prepare($query);
+            $stmt->bindParam(':id_solicitud', $id);
+            $stmt->bindParam(':cliente', $cliente);
+            $stmt->bindParam(':agente', $agente);
+            $stmt->bindParam(':propiedad', $propiedad);
+            $stmt->bindParam(':fecha', $fecha);
+            $stmt->bindParam(':horario', $horario);
+            $stmt->execute();
 
-        header('Location: ../admin.php#gestion-visitas');
-        exit;
+            header('Location: admin.php');
+            exit;
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
     }
 }
 

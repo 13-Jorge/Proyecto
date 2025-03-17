@@ -62,11 +62,6 @@ $visitasConfirmadas = obtenerVisitasConfirmadas();
                     <td><?php echo htmlspecialchars($visita['comentarios']); ?></td>
                     <td>
                         <a href="confirmarVisita.php?id=<?php echo $visita['id']; ?>" class="btn btn-primary">Confirmar</a>
-                        <form method="post" style="display:inline;" onsubmit="return confirmRechazar(this);">
-                            <input type="hidden" name="id" value="<?php echo $visita['id']; ?>">
-                            <input type="hidden" name="razon" value="">
-                            <button type="submit" name="rechazar" class="btn btn-danger">Rechazar</button>
-                        </form>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -96,10 +91,6 @@ $visitasConfirmadas = obtenerVisitasConfirmadas();
                     <td><?php echo htmlspecialchars($visita['fecha']); ?></td>
                     <td><?php echo htmlspecialchars($visita['horario']); ?></td>
                     <td>
-                        <form method="post" style="display:inline;">
-                            <input type="hidden" name="id" value="<?php echo $visita['id']; ?>">
-                            <button type="submit" name="cancelar" class="btn btn-danger">Cancelar</button>
-                        </form>
                     </td>
                 </tr>
             <?php endforeach; ?>
