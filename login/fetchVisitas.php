@@ -6,7 +6,7 @@ function obtenerVisitas()
     $pdo = connectDB();
     if ($pdo != null) {
         $query = "SELECT v.id, p.titulo AS propiedad, l.nombre AS cliente, v.dias_preferencia AS fecha, v.rango_horas AS hora, v.comentarios
-                  FROM visitas v
+                  FROM visitasSolicitadas v
                   JOIN propiedades p ON v.propiedad_id = p.id
                   JOIN login l ON v.cliente_id = l.user";
         $stmt = $pdo->prepare($query);
@@ -19,7 +19,8 @@ function obtenerVisitas()
 $visitas = obtenerVisitas();
 ?>
 <div class="table-responsive">
-    <h2>Gestión de Visitas</h2>
+    <h2>Gestión de Visitas</h2> <br><br>
+    <h3>Visitas Solicitadas</h3>
     <table class="table table-striped">
         <thead>
             <tr>

@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $titulo_propiedad = $propiedad['titulo'];
 
     // Insert visit request
-    $stmt = $pdo->prepare("INSERT INTO visitas (propiedad_id, cliente_id, dias_preferencia, rango_horas, comentarios) VALUES (?, ?, ?, ?, ?)");
+    $stmt = $pdo->prepare("INSERT INTO visitasSolicitadas (propiedad_id, cliente_id, dias_preferencia, rango_horas, comentarios) VALUES (?, ?, ?, ?, ?)");
     $stmt->execute([$propiedad_id, $cliente_id, $dias_preferencia, $rango_horas, $comentarios]);
 
     // Insert notification
