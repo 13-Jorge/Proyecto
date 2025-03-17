@@ -1,5 +1,10 @@
 <?php
 include_once '../connectDB/connect.php';
+session_start();
+if (!isset($_SESSION['user']) || !esAdmin($_SESSION['user'])) {
+    header('Location: login.php');
+    exit();
+}
 
 function obtenerHomestaging()
 {
@@ -16,21 +21,6 @@ function obtenerHomestaging()
     return [];
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $propiedad = $_POST['propiedad'];
-    $descripcion = $_POST['descripcion'];
-    $fecha = $_POST['fecha'];
-    $coste = $_POST['coste'];
-    $agente = $_POST['agente'];
-
-    $pdo = connectDB();
-    if ($pdo != null) {
-        $query = "INSERT INTO homestaging (propiedad_id, descripcion, fecha, coste, agente) VALUES (?, ?, ?, ?, ?)";
-        $stmt = $pdo->prepare($query);
-        $stmt->execute([$propiedad, $descripcion, $fecha, $coste, $agente]);
-    }
-}
-
 // Fetch agents
 $agentes = obtenerAgentes();
 
@@ -43,7 +33,7 @@ setlocale(LC_TIME, 'es_ES.UTF-8');
 <h2>Gestión de Homestaging</h2>
 
 <!-- Formulario para añadir homestaging -->
-<form id="homestaging-form" method="POST">
+<form id="homestaging-form" method="POST" action="insertHomestaging.php"">
     <div class="form-group">
         <label for="propiedad">Propiedad</label>
         <select id="propiedad" name="propiedad" class="form-control" required>
@@ -63,7 +53,7 @@ setlocale(LC_TIME, 'es_ES.UTF-8');
     </div>
     <div class="form-group">
         <label for="fecha">Fecha</label>
-        <input type="date" id="fecha" name="fecha" class="form-control" required min="<?php echo date('Y-m-d'); ?>" pattern="\d{2}/\d{2}/\d{4}">
+        <input type="date" id="fecha" name="fecha" class="form-control" required min="<?php echo date('Y-m-d'); ?>">
     </div>
     <div class="form-group">
         <label for="coste">Coste</label>
