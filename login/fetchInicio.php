@@ -7,6 +7,60 @@ if (!isset($_SESSION['user']) || !esAdmin($_SESSION['user'])) {
     echo '<div class="alert alert-danger">No tienes permisos para acceder a esta sección.</div>';
     exit();
 }
+
+// Función para contar el total de usuarios
+function contarUsuarios() {
+    $pdo = connectDB();
+    if ($pdo != null) {
+        $consulta = "SELECT COUNT(*) FROM login";
+        $resul = $pdo->query($consulta);
+        return $resul->fetchColumn();
+    }
+    return 0;
+}
+
+// Función para contar el total de propiedades
+function contarPropiedades() {
+    $pdo = connectDB();
+    if ($pdo != null) {
+        $consulta = "SELECT COUNT(*) FROM propiedades";
+        $resul = $pdo->query($consulta);
+        return $resul->fetchColumn();
+    }
+    return 0;
+}
+
+// Función para contar solicitudes pendientes (visitas solicitadas que no están en visitasConfirmadas)
+function contarSolicitudesPendientes() {
+    $pdo = connectDB();
+    if ($pdo != null) {
+        $consulta = "SELECT COUNT(*) FROM visitasSolicitadas WHERE id NOT IN (SELECT id_solicitud FROM visitasConfirmadas)";
+        $resul = $pdo->query($consulta);
+        return $resul->fetchColumn();
+    }
+    return 0;
+}
+
+// Función para contar las visitas programadas para hoy
+function contarVisitasHoy() {
+    $pdo = connectDB();
+    if ($pdo != null) {
+        // Obtener la fecha actual en formato dd/mm/yyyy para que coincida con la base de datos
+        $fechaHoy = date('d/m/Y'); // Usamos '/' en lugar de '-' para el formato
+        
+        // Consulta para encontrar registros que coincidan con la fecha de hoy
+        $consulta = "SELECT COUNT(*) FROM visitasConfirmadas WHERE fecha = :fechaHoy";
+        $resul = $pdo->prepare($consulta);
+        $resul->execute(['fechaHoy' => $fechaHoy]);
+        return $resul->fetchColumn();
+    }
+    return 0;
+}
+// Obtener las estadísticas
+$totalUsuarios = contarUsuarios();
+$totalPropiedades = contarPropiedades();
+$solicitudesPendientes = contarSolicitudesPendientes();
+$visitasHoy = contarVisitasHoy();
 ?>
 
 <div class="inicio-container">
@@ -31,7 +85,7 @@ if (!isset($_SESSION['user']) || !esAdmin($_SESSION['user'])) {
                 <div class="card-body text-center">
                     <i class="fas fa-home fa-3x mb-3 text-primary"></i>
                     <h3 class="counter"><?php echo $totalPropiedades; ?></h3>
-                    <p class="card-text">Propiedades Activas</p>
+                    <p class="card-text">Propiedades</p>
                 </div>
             </div>
         </div>
@@ -40,8 +94,8 @@ if (!isset($_SESSION['user']) || !esAdmin($_SESSION['user'])) {
             <div class="card stat-card">
                 <div class="card-body text-center">
                     <i class="fas fa-calendar-check fa-3x mb-3 text-primary"></i>
-                    <h3 class="counter"><?php echo $totalVisitas; ?></h3>
-                    <p class="card-text">Visitas Totales</p>
+                    <h3 class="counter"><?php echo $solicitudesPendientes; ?></h3>
+                    <p class="card-text">Solicitudes Pendientes</p>
                 </div>
             </div>
         </div>
@@ -76,31 +130,9 @@ if (!isset($_SESSION['user']) || !esAdmin($_SESSION['user'])) {
             </div>
             <div class="col-md-4 mb-3">
                 <a href="#" class="btn btn-gold btn-block btn-lg" data-section="visitas">
-                    <i class="fas fa-calendar-plus mr-2"></i>Programar Visita
+                    <i class="fas fa-calendar-plus mr-2"></i>Programar Homestaging
                 </a>
             </div>
         </div>
     </div>
 </div>
-
-<script>
-    // Añadir event listeners a los botones de acciones rápidas
-    document.addEventListener('DOMContentLoaded', function() {
-        const quickActionButtons = document.querySelectorAll('.quick-actions-container .btn');
-        
-        quickActionButtons.forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                const section = this.getAttribute('data-section');
-                
-                // Actualizar la clase active en el menú
-                const menuItems = document.querySelectorAll('.list-group-item');
-                menuItems.forEach(item => item.classList.remove('active'));
-                document.querySelector(`.list-group-item[data-section="${section}"]`).classList.add('active');
-                
-                // Cargar la sección
-                loadSection(section);
-            });
-        });
-    });
-</script>
