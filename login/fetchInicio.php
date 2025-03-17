@@ -125,7 +125,7 @@ $visitasHoy = contarVisitasHoy();
             </div>
             <div class="col-md-4 mb-3">
                 <a href="#" class="btn btn-gold btn-block btn-lg" data-section="usuarios">
-                    <i class="fas fa-user-plus mr-2"></i>Nuevo Usuario
+                    <i class="fas fa-user-plus mr-2"></i>Nuevo Agente
                 </a>
             </div>
             <div class="col-md-4 mb-3">

@@ -10,7 +10,8 @@ function obtenerVisitasSolicitadas()
                   JOIN propiedades p ON v.propiedad_id = p.id
                   JOIN login l ON v.cliente_id = l.user
                   LEFT JOIN visitasConfirmadas vc ON v.id = vc.id_solicitud
-                  WHERE vc.id_solicitud IS NULL";
+                  WHERE vc.id_solicitud IS NULL
+                  AND STR_TO_DATE(SUBSTRING_INDEX(v.dias_preferencia, ',', -1), '%d/%m/%Y') >= CURDATE()";
         $stmt = $pdo->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -24,7 +25,8 @@ function obtenerVisitasConfirmadas()
     if ($pdo != null) {
         $query = "SELECT vc.id, vc.cliente, vc.agente, p.titulo AS propiedad, vc.fecha, vc.horario
                   FROM visitasConfirmadas vc
-                  JOIN propiedades p ON vc.propiedad = p.id";
+                  JOIN propiedades p ON vc.propiedad = p.id
+                  WHERE STR_TO_DATE(vc.fecha, '%d/%m/%Y') >= CURDATE()";
         $stmt = $pdo->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -62,6 +64,7 @@ $visitasConfirmadas = obtenerVisitasConfirmadas();
                     <td><?php echo htmlspecialchars($visita['comentarios']); ?></td>
                     <td>
                         <a href="confirmarVisita.php?id=<?php echo $visita['id']; ?>" class="btn btn-primary">Confirmar</a>
+                        <a href="confirmarVisita.php?id=<?php echo $visita['id']; ?>" class="btn btn-secondary">Rechazar</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -91,6 +94,7 @@ $visitasConfirmadas = obtenerVisitasConfirmadas();
                     <td><?php echo htmlspecialchars($visita['fecha']); ?></td>
                     <td><?php echo htmlspecialchars($visita['horario']); ?></td>
                     <td>
+                    <a href="confirmarVisita.php?id=<?php echo $visita['id']; ?>" class="btn btn-secondary">Cancelar</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

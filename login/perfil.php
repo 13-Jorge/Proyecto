@@ -66,7 +66,7 @@ $datosUsuario = obtenerDatosUsuario($user);
                     </div>
                     <div class="d-flex justify-content-center mt-3">
                         <button type="submit" class="btn btn-primary mr-2">Actualizar Datos</button>
-                        <button type="button" class="btn btn-danger" onclick="borrarCuenta('<?php echo htmlspecialchars($datosUsuario['user']); ?>')">Borrar Cuenta</button>
+                        <button type="button" class="btn btn-secondary" onclick="borrarCuenta('<?php echo htmlspecialchars($datosUsuario['user']); ?>')">Borrar Cuenta</button>
                     </div>
                 </form>
             <?php else: ?>

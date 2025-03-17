@@ -18,17 +18,7 @@ function obtenerVisitaSolicitada($id)
     return null;
 }
 
-function obtenerAgentes()
-{
-    $pdo = connectDB();
-    if ($pdo != null) {
-        $query = "SELECT user, nombre FROM login WHERE es_admin = TRUE";
-        $stmt = $pdo->prepare($query);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-    return [];
-}
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
