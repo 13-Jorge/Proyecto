@@ -16,7 +16,20 @@ function obtenerHomestaging()
     return [];
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $propiedad = $_POST['propiedad'];
+    $descripcion = $_POST['descripcion'];
+    $fecha = $_POST['fecha'];
+    $coste = $_POST['coste'];
+    $agente = $_POST['agente'];
 
+    $pdo = connectDB();
+    if ($pdo != null) {
+        $query = "INSERT INTO homestaging (propiedad_id, descripcion, fecha, coste, agente) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$propiedad, $descripcion, $fecha, $coste, $agente]);
+    }
+}
 
 // Fetch agents
 $agentes = obtenerAgentes();
