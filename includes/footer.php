@@ -52,8 +52,7 @@
                 <p class="legal-links">
                     <a href="privacy.php">Política de Privacidad</a> |
                     <a href="terms.php">Términos y Condiciones</a> |
-                    <a href="cookies.php">Política de Cookies</a> |
-                    <a href="sitemap.php">Mapa del Sitio</a>
+                    <a href="cookies.php">Política de Cookies</a> 
                 </p>
             </div>
         </div>
