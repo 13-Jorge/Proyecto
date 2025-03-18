@@ -40,6 +40,13 @@
     }
 }
 
+/* Ocultar texto del carrusel en versión móvil */
+@media (max-width: 767px) {
+    .carousel-caption {
+        display: none;
+    }
+}
+
 /* Mejoras a la sección Acerca de nosotros */
 .about-image {
     border-radius: var(--border-radius-md);
