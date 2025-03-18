@@ -27,7 +27,7 @@ if ($pdo != null) {
     <main class="container my-4">
         <div class="row">
             <?php foreach ($propiedades as $propiedad): ?>
-                <div class="col-md-4 mb-4">
+                <div class="col-lg-4 md-6 mb-4 ">
                     <div class="card">
                         <!-- Mostramos la imagen fuera del collapse -->
                         <div class="card-img-container">

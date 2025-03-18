@@ -1,25 +1,25 @@
 /* Estilos para la sección de inicio en el panel de administración */
 .inicio-container {
-    padding: 1.5rem;
+    padding: 1rem 1rem 1.5rem;
 }
 
 .welcome-section {
     background-color: var(--primary-color);
     color: var(--dark-color);
     border-radius: var(--border-radius-lg);
-    padding: 2.5rem;
+    padding: 1.5rem;
     text-align: center;
     box-shadow: var(--shadow-md);
 }
 
 .welcome-section h1 {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .welcome-section p {
-    font-size: 1.2rem;
+    font-size: 1rem;
     opacity: 0.9;
 }
 
@@ -30,29 +30,45 @@
 }
 
 .stats-row .card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
 }
 
+.stats-row .card-body {
+    padding: 1rem 0.75rem;
+    min-height: 120px;
+}
+
 .stats-row .counter {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     font-weight: 700;
     color: var(--primary-color);
+    margin-bottom: 0.25rem;
 }
 
 .stats-row .text-primary {
     color: var(--primary-color) !important;
 }
 
+.stats-row .card-text {
+    font-size: 0.8rem;
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+
+.stats-row .stat-label {
+    font-size: 0.75rem; /* Texto más pequeño para "Propiedades" */
+}
+
 .logo-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 200px;
+    min-height: 150px;
 }
 
 .central-logo {
-    max-width: 300px;
+    max-width: 200px;
     height: auto;
     filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
     transition: var(--transition-normal);
@@ -66,7 +82,7 @@
 .quick-actions-container {
     background-color: var(--light-color);
     border-radius: var(--border-radius-lg);
-    padding: 2rem;
+    padding: 1.5rem;
     box-shadow: var(--shadow-sm);
 }
 
@@ -74,7 +90,8 @@
     color: var(--primary-color);
     text-align: center;
     position: relative;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
+    font-size: 1.5rem;
 }
 
 .quick-actions-container h2::after {
@@ -83,7 +100,7 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 50px;
+    width: 40px;
     height: 3px;
     background-color: var(--primary-color);
 }
@@ -92,58 +109,134 @@
     background-color: var(--primary-color);
     color: var(--dark-color);
     font-weight: 600;
-    padding: 1rem;
+    padding: 0.75rem;
     transition: var(--transition-normal);
     border-radius: var(--border-radius-md);
     box-shadow: var(--shadow-sm);
+    font-size: 0.9rem;
 }
 
 .btn-gold:hover {
     background-color: var(--primary-dark);
-    transform: translateY(-5px);
+    transform: translateY(-3px);
     box-shadow: var(--shadow-md);
 }
 
-/* Responsive adjustments */
-@media (max-width: 991px) {
-    .welcome-section h1 {
-        font-size: 2.2rem;
-    }
-    
-    .stats-row .counter {
-        font-size: 2.2rem;
-    }
+/* Clases específicas por tamaño */
+.fa-2x {
+    font-size: 1.5rem;
 }
 
-@media (max-width: 767px) {
+/* Media queries para manejo de dispositivos */
+/* Tablets y dispositivos medianos */
+@media (min-width: 768px) {
+    .inicio-container {
+        padding: 1.5rem;
+    }
+    
     .welcome-section {
         padding: 2rem;
     }
     
     .welcome-section h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
+        margin-bottom: 1rem;
     }
     
     .welcome-section p {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
     
     .stats-row .counter {
-        font-size: 1.8rem;
+        font-size: 2rem;
+    }
+    
+    .fa-md-3x {
+        font-size: 2.2rem !important;
+    }
+    
+    .stats-row .card-text {
+        font-size: 0.9rem;
+    }
+    
+    .stats-row .stat-label {
+        font-size: 0.8rem;
+        letter-spacing: -0.5px;
+    }
+    
+    .stats-row .card-body {
+        padding: 1.25rem 0.75rem;
+        min-height: 140px;
     }
     
     .quick-actions-container {
-        padding: 1.5rem;
+        padding: 2rem;
+    }
+    
+    .quick-actions-container h2 {
+        font-size: 1.8rem;
+    }
+    
+    .btn-gold {
+        padding: 1rem;
+        font-size: 1rem;
     }
 }
 
-@media (max-width: 575px) {
+/* Laptops y dispositivos grandes */
+@media (min-width: 992px) {
+    .welcome-section {
+        padding: 2.5rem;
+    }
+    
     .welcome-section h1 {
-        font-size: 1.5rem;
+        font-size: 2.5rem;
+    }
+    
+    .welcome-section p {
+        font-size: 1.2rem;
+    }
+    
+    .stats-row .counter {
+        font-size: 2.3rem;
+    }
+    
+    .stats-row .card-text {
+        font-size: 1rem;
+    }
+    
+    .stats-row .card-body {
+        padding: 1.5rem 1rem;
+        min-height: 160px;
+    }
+    
+    .stats-row .stat-label {
+        font-size: 0.9rem;
+        letter-spacing: normal;
     }
     
     .central-logo {
-        max-width: 200px;
+        max-width: 300px;
+    }
+    
+    .btn-gold {
+        font-size: 1.1rem;
+    }
+}
+
+/* Pantallas más grandes */
+@media (min-width: 1200px) {
+    .stats-row .card-body {
+        min-height: 170px;
+    }
+    
+    .stats-row .counter {
+        font-size: 2.5rem;
+    }
+    
+    .stats-row .card-text,
+    .stats-row .stat-label {
+        font-size: 1.1rem;
     }
 }
 

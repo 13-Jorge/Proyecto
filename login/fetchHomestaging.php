@@ -76,7 +76,7 @@ setlocale(LC_TIME, 'es_ES.UTF-8');
         <tr>
             <th>ID</th>
             <th>Propiedad</th>
-            <th>Descripción</th>
+            <th class="descripcion-columna">Descripción</th>
             <th>Fecha</th>
             <th>Coste</th>
             <th>Agente</th>
@@ -87,7 +87,7 @@ setlocale(LC_TIME, 'es_ES.UTF-8');
             <tr>
                 <td><?php echo htmlspecialchars($record['id']); ?></td>
                 <td><?php echo htmlspecialchars($record['propiedad_titulo']); ?></td>
-                <td><?php echo htmlspecialchars($record['descripcion']); ?></td>
+                <td class="descripcion-columna"><?php echo htmlspecialchars($record['descripcion']); ?></td>
                 <td><?php echo htmlspecialchars($record['fecha']); ?></td>
                 <td><?php echo htmlspecialchars($record['coste']); ?></td>
                 <td><?php echo htmlspecialchars($record['agente_nombre']); ?></td>

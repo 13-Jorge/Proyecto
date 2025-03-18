@@ -62,7 +62,7 @@ if ($pdo != null) {
             <label for="num_habitaciones">Número de Habitaciones</label>
             <input type="number" id="num_habitaciones" name="num_habitaciones" class="form-control" required>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-6 mx-auto">
             <label for="num_banos">Número de Baños</label>
             <input type="number" id="num_banos" name="num_banos" class="form-control" required>
         </div>
@@ -80,7 +80,7 @@ if ($pdo != null) {
             <tr>
                 <th>Título</th>
                 <th class="descripcion-columna">Descripción</th>
-                <th class="precio-columna">Precio</th>
+                <th>Precio</th>
                 <th>Dirección</th>
                 <th>Ciudad</th>
                 <th>Acciones</th>

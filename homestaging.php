@@ -13,6 +13,53 @@ include_once 'connectDB/connect.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/common.css">
+    <style>
+        /* Estilos adicionales específicos para la página de homestaging */
+        @media (max-width: 991px) {
+            .homestaging-text {
+                font-size: 0.95rem;
+            }
+            .homestaging-lead {
+                font-size: 1.1rem;
+            }
+            .before-after-wrapper {
+                margin-top: 20px;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .homestaging-text {
+                font-size: 0.9rem;
+                /* Versión resumida para móvil */
+                display: none;
+            }
+            .homestaging-text-mobile {
+                display: block;
+            }
+            .homestaging-lead {
+                font-size: 1rem;
+            }
+            .before-after-wrapper {
+                width: 100%;
+                margin: 25px auto 0;
+            }
+            .before-after-container {
+                height: 300px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .homestaging-text-mobile {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 575px) {
+            .before-after-container {
+                height: 250px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -29,22 +76,24 @@ include_once 'connectDB/connect.php';
         <div class="container">
             <section class="mb-5">
                 <h2 class="text-center mb-4">¿Qué es el Homestaging?</h2>
+                <!-- Versión para escritorio y tablet grande -->
                 <div class="row">
-                    <div class="col-md-6">
-                        <p class="lead">El homestaging es una técnica de marketing inmobiliario que consiste en preparar y decorar una propiedad para que resulte más atractiva a los posibles compradores. El objetivo es destacar los puntos fuertes de la vivienda y minimizar sus debilidades, creando un ambiente acogedor y neutral que permita a los compradores potenciales imaginarse viviendo en ella.</p>
-                        <p>En CM Gestión Inmobiliaria, ofrecemos servicios de homestaging para ayudarte a vender tu propiedad más rápido y al mejor precio. Nuestro equipo de expertos se encargará de todo el proceso, desde la planificación y diseño hasta la ejecución y fotografía profesional.</p>
+                    <div class="col-lg-6 mb-4">
+                        <p class="lead homestaging-lead">El homestaging es una técnica de marketing inmobiliario que consiste en preparar y decorar una propiedad para que resulte más atractiva a los posibles compradores. El objetivo es destacar los puntos fuertes de la vivienda y minimizar sus debilidades.</p>
+                        <p class="homestaging-text">En CM Gestión Inmobiliaria, ofrecemos servicios de homestaging para ayudarte a vender tu propiedad más rápido y al mejor precio. Nuestro equipo de expertos se encargará de todo el proceso, desde la planificación y diseño hasta la ejecución y fotografía profesional.</p>
+                        <!-- Versión resumida para móvil y tablet -->
+                        <p class="homestaging-text-mobile">En CM Gestión Inmobiliaria, te ayudamos a preparar tu vivienda para atraer más compradores. Transformamos los espacios para crear ambientes acogedores donde los compradores puedan imaginarse viviendo.</p>
                     </div>
-                    <div class="col-md-6">
-                        <div class="col-md-12">
-                            <div class="before-after-wrapper">
-                                <div class="before-after-container">
-                                    <img src="img/homestaging-before.png" alt="Antes del Homestaging" class="before-image">
-                                    <img src="img/homestaging-after.png" alt="Después del Homestaging" class="after-image">
-                                    <div class="before-after-slider"></div>
-                                </div>
+                    <div class="col-lg-6 mb-4">
+                        <div class="before-after-wrapper">
+                            <div class="before-after-container">
+                                <img src="img/homestaging-before.png" alt="Antes del Homestaging" class="before-image">
+                                <img src="img/homestaging-after.png" alt="Después del Homestaging" class="after-image">
+                                <div class="before-after-slider"></div>
                             </div>
                         </div>
                     </div>
+                </div>
             </section>
 
             <section class="mb-5">
@@ -77,7 +126,7 @@ include_once 'connectDB/connect.php';
             <section class="mb-5">
                 <h2 class="text-center mb-4">Nuestros Servicios de Homestaging</h2>
                 <div class="row">
-                    <div class="col-md-3 mb-4">
+                    <div class="col-md-6 col-lg-3 mb-4">
                         <div class="card service-card h-100">
                             <div class="card-body text-center">
                                 <i class="fas fa-clipboard-list fa-3x mb-3 text-primary"></i>
@@ -86,7 +135,7 @@ include_once 'connectDB/connect.php';
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 mb-4">
+                    <div class="col-md-6 col-lg-3 mb-4">
                         <div class="card service-card h-100">
                             <div class="card-body text-center">
                                 <i class="fas fa-couch fa-3x mb-3 text-primary"></i>
@@ -95,7 +144,7 @@ include_once 'connectDB/connect.php';
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 mb-4">
+                    <div class="col-md-6 col-lg-3 mb-4">
                         <div class="card service-card h-100">
                             <div class="card-body text-center">
                                 <i class="fas fa-camera fa-3x mb-3 text-primary"></i>
@@ -104,7 +153,7 @@ include_once 'connectDB/connect.php';
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 mb-4">
+                    <div class="col-md-6 col-lg-3 mb-4">
                         <div class="card service-card h-100">
                             <div class="card-body text-center">
                                 <i class="fas fa-bullhorn fa-3x mb-3 text-primary"></i>
@@ -135,4 +184,3 @@ include_once 'connectDB/connect.php';
 </body>
 
 </html>
-
