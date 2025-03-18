@@ -181,6 +181,11 @@
         padding: 1rem;
         font-size: 1rem;
     }
+
+    .quick-actions-container .row > div {
+        flex: 0 0 100%; /* Make each button take full width */
+        max-width: 100%; /* Ensure each button takes full width */
+    }
 }
 
 /* Laptops y dispositivos grandes */

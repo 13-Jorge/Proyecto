@@ -80,7 +80,7 @@ if ($pdo != null) {
             <tr>
                 <th>Título</th>
                 <th class="descripcion-columna">Descripción</th>
-                <th>Precio</th>
+                <th style="width: 100px;">Precio</th>
                 <th>Dirección</th>
                 <th>Ciudad</th>
                 <th>Acciones</th>

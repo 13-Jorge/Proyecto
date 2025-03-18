@@ -27,11 +27,10 @@ if ($pdo != null) {
             'agente' => $agente
         ]);
 
-        // Para debug en caso de error
-        // echo "Datos insertados: propiedad_id=$propiedad_id, descripcion=$descripcion, fecha=$fecha, coste=$coste, agente=$agente";
+        
+        
     } catch (PDOException $e) {
-        // Para debug en caso de error
-        // echo "Error: " . $e->getMessage();
+        echo "Error: " . $e->getMessage();
     }
 }
 

@@ -98,7 +98,7 @@ setlocale(LC_TIME, 'es_ES.UTF-8');
                     <th>Propiedad</th>
                     <th class="d-none d-lg-table-cell">Descripción</th>
                     <th>Fecha</th>
-                    <th>Coste</th>
+                    <th style="width: 100px;">Coste</th>
                     <th>Agente</th>
                     <th class="text-center">Acciones</th>
                 </tr>
@@ -113,15 +113,7 @@ setlocale(LC_TIME, 'es_ES.UTF-8');
                         <td><?php echo htmlspecialchars($record['coste']); ?> €</td>
                         <td><?php echo htmlspecialchars($record['agente_nombre']); ?></td>
                         <td class="text-center">
-                            <button class="btn btn-sm btn-info ver-detalles" data-id="<?php echo $record['id']; ?>" title="Ver detalles">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                            <button class="btn btn-sm btn-warning editar-homestaging" data-id="<?php echo $record['id']; ?>" title="Editar">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button class="btn btn-sm btn-danger eliminar-homestaging" data-id="<?php echo $record['id']; ?>" title="Eliminar">
-                                <i class="fas fa-trash"></i>
-                            </button>
+                            
                         </td>
                     </tr>
                 <?php endforeach; ?>
