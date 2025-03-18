@@ -1,6 +1,14 @@
 <?php
 session_start();
 include_once 'connectDB/connect.php';
+
+$pdo = connectDB();
+$topProperties = [];
+if ($pdo != null) {
+    $consulta = "SELECT p.*, i.imagen FROM propiedades p LEFT JOIN imagenes i ON p.id = i.propiedad_id ORDER BY p.precio DESC LIMIT 3";
+    $resul = $pdo->query($consulta);
+    $topProperties = $resul->fetchAll(PDO::FETCH_ASSOC);
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -12,12 +20,13 @@ include_once 'connectDB/connect.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
     <?php include_once "./includes/header.php"; ?>
 
     <main>
-        <!-- Carrusel mejorado -->
+        <!-- Carrusel mejorado y responsive -->
         <div id="mainCarousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <?php for ($i = 0; $i < 6; $i++): ?>
@@ -38,7 +47,7 @@ include_once 'connectDB/connect.php';
                 ?>
                     <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
                         <img src="img/<?php echo htmlspecialchars($slide['img']); ?>" class="d-block w-100" alt="<?php echo htmlspecialchars($slide['title']); ?>">
-                        <div class="carousel-caption d-none d-md-block">
+                        <div class="carousel-caption">
                             <h5><?php echo htmlspecialchars($slide['title']); ?></h5>
                             <p><?php echo htmlspecialchars($slide['desc']); ?></p>
                         </div>
@@ -56,27 +65,37 @@ include_once 'connectDB/connect.php';
         </div>
 
         <div class="container mt-5">
-            <!-- Sección Acerca de -->
-            <section id="about" class="about-us text-center py-5">
+            <!-- Sección Acerca de mejorada -->
+            <section id="about" class="about-us py-5">
                 <div class="container">
                     <div class="card">
                         <div class="card-header" id="aboutUsHeader">
                             <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#aboutUsContent" aria-expanded="false" aria-controls="aboutUsContent">
-                                    Quiénes Somos
+                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#aboutUsContent" aria-expanded="true" aria-controls="aboutUsContent">
+                                    <i class="fas fa-building mr-2"></i> Quiénes Somos
                                 </button>
                             </h2>
                         </div>
-                        <div id="aboutUsContent" class="collapse" aria-labelledby="aboutUsHeader">
+                        <div id="aboutUsContent" class="collapse show" aria-labelledby="aboutUsHeader">
                             <div class="card-body">
-                                <p class="lead">En CM Gestión Inmobiliaria, nos dedicamos a una misión clara: vender tu propiedad en las mejores condiciones y en el menor tiempo posible. Nuestro equipo de expertos se especializa en guiarte a través de cada paso del proceso de venta, ofreciendo un servicio personalizado y de calidad. No somos simplemente agentes inmobiliarios; somos tus aliados estratégicos en el mercado inmobiliario, comprometidos a maximizar el valor de tu propiedad y a hacer que tu experiencia de venta sea lo más fluida y exitosa posible.</p>
+                                <div class="row align-items-center">
+                                    <div class="col-lg-4 mb-4 mb-lg-0">
+                                        <div class="about-image">
+                                            <img src="img/about-us.jpg" alt="CM Gestión Inmobiliaria" class="img-fluid rounded">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <p class="lead">En CM Gestión Inmobiliaria, nos dedicamos a una misión clara: vender tu propiedad en las mejores condiciones y en el menor tiempo posible. Nuestro equipo de expertos se especializa en guiarte a través de cada paso del proceso de venta, ofreciendo un servicio personalizado y de calidad.</p>
+                                        <p>No somos simplemente agentes inmobiliarios; somos tus aliados estratégicos en el mercado inmobiliario, comprometidos a maximizar el valor de tu propiedad y a hacer que tu experiencia de venta sea lo más fluida y exitosa posible.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Sección Servicios -->
+            <!-- Sección Servicios mejorada -->
             <section id="services" class="services mt-5">
                 <h2 class="text-center mb-4">Nuestros Servicios</h2>
                 <div class="row">
@@ -93,10 +112,10 @@ include_once 'connectDB/connect.php';
                     ];
                     foreach ($services as $service):
                     ?>
-                        <div class="col-md-6 mb-4">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <i class="<?php echo $service['icon']; ?> fa-3x mb-3 text-primary"></i>
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="card h-100 service-card">
+                                <div class="card-body text-center">
+                                    <i class="<?php echo $service['icon']; ?> fa-3x mb-3 service-icon"></i>
                                     <h5 class="card-title"><?php echo htmlspecialchars($service['title']); ?></h5>
                                     <p class="card-text"><?php echo htmlspecialchars($service['desc']); ?></p>
                                 </div>
@@ -106,31 +125,91 @@ include_once 'connectDB/connect.php';
                 </div>
             </section>
 
-            <!-- Sección Testimonios -->
-            <section id="testimonials" class="testimonials mt-5">
-                <h2 class="text-center mb-4">Testimonios</h2>
+            <!-- Nueva sección: Estadísticas -->
+            <section id="stats" class="stats-section mt-5 py-5">
+                <div class="container">
+                    <h2 class="text-center mb-5">¿Por qué elegir CM Gestión Inmobiliaria?</h2>
+                    <div class="row">
+                        <div class="col-6 col-md-3 mb-4">
+                            <div class="stat-item text-center">
+                                <div class="stat-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="stat-number" data-count="500">0</div>
+                                <div class="stat-label">Propiedades Vendidas</div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3 mb-4">
+                            <div class="stat-item text-center">
+                                <div class="stat-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="stat-number" data-count="350">0</div>
+                                <div class="stat-label">Clientes Satisfechos</div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3 mb-4">
+                            <div class="stat-item text-center">
+                                <div class="stat-icon">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <div class="stat-number" data-count="10">0</div>
+                                <div class="stat-label">Años de Experiencia</div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3 mb-4">
+                            <div class="stat-item text-center">
+                                <div class="stat-icon">
+                                    <i class="fas fa-award"></i>
+                                </div>
+                                <div class="stat-number" data-count="15">0</div>
+                                <div class="stat-label">Premios del Sector</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Nueva sección: Propiedades Destacadas -->
+            <section id="featured-properties" class="featured-properties mt-5">
+                <h2 class="text-center mb-4">Propiedades Destacadas</h2>
                 <div class="row">
-                    <?php
-                    $testimonials = [
-                        ['text' => 'Excelente servicio, me ayudaron a vender mi casa rápidamente.', 'author' => 'Ana López'],
-                        ['text' => 'Muy profesionales, todo el proceso fue transparente y fácil.', 'author' => 'Pedro Martínez'],
-                        ['text' => 'Recomiendo CM Gestión Inmobiliaria, son los mejores.', 'author' => 'Laura Sánchez']
-                    ];
-                    foreach ($testimonials as $testimonial):
-                    ?>
-                        <div class="col-md-4 mb-4">
-                            <div class="card">
+                    <?php foreach ($topProperties as $property): ?>
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card property-card h-100">
+                                <div class="card-img-container">
+                                    <img src="data:image/jpeg;base64,<?php echo base64_encode($property['imagen']); ?>" class="card-img-top" alt="<?php echo htmlspecialchars($property['titulo']); ?>">
+                                </div>
                                 <div class="card-body">
-                                    <p class="card-text"><i class="fas fa-quote-left mr-2"></i><?php echo htmlspecialchars($testimonial['text']); ?></p>
-                                    <h5 class="card-title text-right">- <?php echo htmlspecialchars($testimonial['author']); ?></h5>
+                                    <h5 class="card-title"><?php echo htmlspecialchars($property['titulo']); ?></h5>
+                                    <p class="property-price"><?php echo number_format($property['precio'], 0, ',', '.'); ?>€</p>
+                                    <p class="card-text"><i class="fas fa-info-circle mr-2"></i><?php echo htmlspecialchars($property['descripcion']); ?></p>
                                 </div>
                             </div>
                         </div>
                     <?php endforeach; ?>
                 </div>
+                <div class="text-center mt-4">
+                    <a href="propiedades.php" class="btn btn-gold">Ver todas las propiedades</a>
+                </div>
             </section>
 
-
+            <!-- Nueva sección: Call to Action -->
+            <section id="cta" class="cta-section mt-5">
+                <div class="card cta-card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-lg-8 mb-4 mb-lg-0">
+                                <h3>¿Quieres vender tu propiedad o comprar una?</h3>
+                                <p class="mb-0">Contáctanos hoy mismo y nuestro equipo de expertos te ayudará a conseguir el mejor acuerdo posible.</p>
+                            </div>
+                            <div class="col-lg-4 text-center text-lg-right">
+                                <a href="contacto.php" class="btn btn-gold">Contactar ahora</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
 
@@ -141,5 +220,6 @@ include_once 'connectDB/connect.php';
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/cerrarSesion.js"></script>
     <script src="js/contacto.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>
