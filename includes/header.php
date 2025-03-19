@@ -17,7 +17,7 @@
                 </ul>
                 <div class="user-info d-flex align-items-center ml-3">
                     <?php if (isset($_SESSION['user'])): ?>
-                        <img src="img/user.svg" alt="User Icon" class="rounded-circle mr-2" style="width: 30px; height: 30px;">
+                        <i class="fas fa-user-circle fa-2x mr-2"></i>
                         <a href="<?php echo esAdmin($_SESSION['user']) ? 'login/admin.php' : 'login/perfil.php'; ?>" class="btn btn-outline-light mr-2"><?php echo htmlspecialchars($_SESSION['user']); ?></a>
                         <button class="btn btn-outline-light" onclick="cerrarSesion()">Cerrar Sesión</button>
                     <?php else: ?>
