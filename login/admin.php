@@ -32,7 +32,7 @@ $numNotificaciones = count(array_filter($notificaciones, function ($notificacion
 <body class="admin-page">
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
-        <div id="sidebar-wrapper">
+        <div id="sidebar-wrapper" class="d-flex flex-column vh-100">
             <!-- Contenedor separado para el botón de cierre -->
             <div class="close-btn-container">
                 <button class="close-btn" id="close-sidebar">
