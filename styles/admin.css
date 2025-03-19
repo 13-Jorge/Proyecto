@@ -250,9 +250,14 @@ body.admin-page {
 @media (max-width: 767px) {
     #sidebar-wrapper {
         margin-left: -100%;
-        width: 100%; /* Cambiado a 100% para ocupar toda la pantalla */
-        height: 100%; /* Asegurar que ocupe toda la altura */
-        overflow-y: auto; /* Permitir scroll vertical si es necesario */
+        width: 100%; /* Ocupa toda la pantalla */
+        height: auto; /* Cambiado de 100% a auto para evitar scroll */
+        max-height: 100vh; /* Altura máxima es la altura de la ventana */
+        overflow-y: visible; /* Cambiado de auto a visible para evitar scroll */
+        position: fixed; /* Mantiene el sidebar fijo */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Distribuye el espacio entre los elementos */
     }
     
     #wrapper.toggled #sidebar-wrapper {
@@ -262,14 +267,12 @@ body.admin-page {
     
     /* Contenedor separado para el botón de cierre */
     .close-btn-container {
-        display: flex;
-        justify-content: flex-end;
-        padding: 1rem;
+        padding: 0.5rem; /* Reducido el padding */
     }
 
     /* Ajustar el logo en móviles */
     .sidebar-logo-container {
-        padding: 2rem 1rem;
+        padding: 1rem; /* Reducido el padding */
         display: flex;
         justify-content: center;
     }
@@ -283,22 +286,30 @@ body.admin-page {
         font-size: 1.75rem;
     }
     
+    /* Hacer que los elementos del menú se ajusten al espacio disponible */
+    #sidebar-wrapper .list-group {
+        flex-grow: 0; /* Cambiado de 1 a 0 para que no crezca más de lo necesario */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
     .list-group-item {
-        font-size: 1.25rem; /* Aumentar el tamaño de la fuente */
-        padding: 1rem 1.5rem; /* Aumentar el padding */
+        padding: 0.5rem 1.5rem; /* Reducido el padding vertical */
+        font-size: 1rem; /* Reducido el tamaño de fuente */
         width: 100%; /* Asegurar que ocupe todo el ancho */
         justify-content: flex-start;
     }
     
     .logout-container {
-        padding: 1.5rem;
+        padding: 0.75rem; /* Reducido el padding */
         width: 100%;
     }
     
     .logout-container .btn {
         width: 100%;
-        padding: 0.75rem;
-        font-size: 1.1rem;
+        padding: 0.5rem;
+        font-size: 1rem;
     }
     
     #page-content-wrapper {
