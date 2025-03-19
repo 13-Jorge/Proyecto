@@ -184,6 +184,17 @@ body.admin-page {
     margin: 0 0.125rem;
 }
 
+/* Media query específica para iPad (1024 x 768) */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    #page-content-wrapper {
+        padding: 0.5rem;
+    }
+    
+    #content {
+        padding: 0.5rem;
+    }
+}
+
 /* Media queries para responsividad */
 @media (max-width: 991px) {
     /* Mostrar el botón de menú en tablets y móviles */
@@ -240,8 +251,11 @@ body.admin-page {
     }
     
     #page-content-wrapper {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
+        padding: 0.25rem;
+    }
+    
+    #content {
+        padding: 0.25rem;
     }
     
     /* Ajustes adicionales para móviles */
