@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Propiedad</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/common.css">
     <style>
         /* Estilos específicos para la página de editar propiedad */
         .container {
@@ -174,7 +174,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         .form-actions {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            gap: 1rem;
             margin-top: 2rem;
         }
 
@@ -328,7 +329,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                     <div class="form-actions">
                         <button type="submit" name="update" class="btn-primary">Actualizar Propiedad</button>
-                        <button type="submit" name="delete" class="btn-danger" onclick="return confirm('¿Está seguro de que desea eliminar esta propiedad? Esta acción no se puede deshacer.')">Eliminar Propiedad</button>
+                        <button type="submit" name="delete" class="btn-secondary" onclick="return confirm('¿Está seguro de que desea eliminar esta propiedad? Esta acción no se puede deshacer.')">Eliminar Propiedad</button>
                     </div>
                 </form>
             </div>

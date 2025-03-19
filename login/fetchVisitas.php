@@ -38,6 +38,72 @@ function obtenerVisitasConfirmadas()
 $visitasSolicitadas = obtenerVisitasSolicitadas();
 $visitasConfirmadas = obtenerVisitasConfirmadas();
 ?>
+
+<style>
+/* Estilos para dispositivos móviles */
+@media (max-width: 767px) {
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+    }
+    
+    .table {
+        width: 100%;
+        min-width: 700px; /* Ancho mínimo consistente para ambas tablas */
+    }
+    
+    .tabla-acciones {
+        min-width: 100px !important;
+        width: 100px !important;
+    }
+    
+    .btn-accion {
+        padding: 0.375rem 0.5rem;
+        font-size: 0.875rem;
+        text-align: center;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Ocultar la columna de comentarios en dispositivos móviles */
+    .columna-comentarios,
+    .th-comentarios {
+        display: none;
+    }
+}
+
+/* Estilos específicos para tablets (1024x768 o menor) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+    }
+    
+    .table {
+        width: 100%;
+        min-width: 700px; /* Ancho mínimo consistente para ambas tablas */
+    }
+    
+    .tabla-acciones {
+        min-width: 120px !important;
+        width: 120px !important;
+    }
+    
+    .btn-accion {
+        padding: 0.375rem 0.5rem;
+        font-size: 0.875rem;
+    }
+    
+    /* Ocultar la columna de comentarios en tablets */
+    .columna-comentarios,
+    .th-comentarios {
+        display: none;
+    }
+}
+</style>
+
 <div class="table-responsive">
     <h2>Gestión de Visitas</h2> <br><br>
     <h3 id="gestion-visitas">Visitas Solicitadas</h3>
@@ -49,7 +115,7 @@ $visitasConfirmadas = obtenerVisitasConfirmadas();
                 <th>Cliente</th>
                 <th>Preferencia Fecha</th>
                 <th>Preferencia Hora</th>
-                <th>Comentarios</th>
+                <th class="th-comentarios">Comentarios</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -61,11 +127,11 @@ $visitasConfirmadas = obtenerVisitasConfirmadas();
                     <td><?php echo htmlspecialchars($visita['cliente']); ?></td>
                     <td><?php echo htmlspecialchars($visita['fecha']); ?></td>
                     <td><?php echo htmlspecialchars($visita['hora']); ?></td>
-                    <td><?php echo htmlspecialchars($visita['comentarios']); ?></td>
-                    <td>
-                        <div class="d-flex flex-column flex-lg-row gap-2">
-                            <a href="confirmarVisita.php?id=<?php echo $visita['id']; ?>" class="btn btn-primary btn-sm w-100">Confirmar</a>
-                            <a href="confirmarVisita.php?id=<?php echo $visita['id']; ?>" class="btn btn-secondary btn-sm w-100">Rechazar</a>
+                    <td class="columna-comentarios"><?php echo htmlspecialchars($visita['comentarios']); ?></td>
+                    <td class="tabla-acciones" style="min-width: 140px;">
+                        <div class="d-flex flex-column flex-xl-row gap-2">
+                            <a href="confirmarVisita.php?id=<?php echo $visita['id']; ?>" class="btn btn-primary btn-sm w-100 mb-2 mb-xl-0 btn-accion">Confirmar</a>
+                            <a href="confirmarVisita.php?id=<?php echo $visita['id']; ?>" class="btn btn-secondary btn-sm w-100 btn-accion">Rechazar</a>
                         </div>
                     </td>
                 </tr>
@@ -95,8 +161,8 @@ $visitasConfirmadas = obtenerVisitasConfirmadas();
                     <td><?php echo htmlspecialchars($visita['propiedad']); ?></td>
                     <td><?php echo htmlspecialchars($visita['fecha']); ?></td>
                     <td><?php echo htmlspecialchars($visita['horario']); ?></td>
-                    <td>
-                        <a href="confirmarVisita.php?id=<?php echo $visita['id']; ?>" class="btn btn-secondary">Cancelar</a>
+                    <td class="tabla-acciones" style="min-width: 140px;">
+                        <a href="confirmarVisita.php?id=<?php echo $visita['id']; ?>" class="btn btn-secondary w-100 btn-accion">Cancelar</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
