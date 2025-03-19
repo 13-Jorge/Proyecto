@@ -238,12 +238,21 @@ body.admin-page {
 @media (max-width: 767px) {
     #sidebar-wrapper {
         margin-left: -100%;
-        width: 80%;
+        width: 100%; /* Cambiado a 100% para ocupar toda la pantalla */
+        height: 100%; /* Asegurar que ocupe toda la altura */
+        overflow: hidden; /* Prevenir deslizamiento */
     }
     
     #wrapper.toggled #sidebar-wrapper {
         margin-left: 0;
-        width: 80%;
+        width: 100%; /* Cambiado a 100% para ocupar toda la pantalla */
+    }
+    
+    .list-group-item {
+        font-size: 1.25rem; /* Aumentar el tamaño de la fuente */
+        padding: 1rem 1.5rem; /* Aumentar el padding */
+        width: 100%; /* Asegurar que ocupe todo el ancho */
+        box-sizing: border-box; /* Incluir padding y borde en el ancho total */
     }
     
     .logout-container {
