@@ -252,7 +252,6 @@ body.admin-page {
         font-size: 1.25rem; /* Aumentar el tamaño de la fuente */
         padding: 1rem 1.5rem; /* Aumentar el padding */
         width: 100%; /* Asegurar que ocupe todo el ancho */
-        box-sizing: border-box; /* Incluir padding y borde en el ancho total */
     }
     
     .logout-container {
