@@ -33,12 +33,21 @@ $numNotificaciones = count(array_filter($notificaciones, function ($notificacion
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
-            <button class="close-btn" id="close-sidebar">
-                <i class="fas fa-times"></i>
-            </button>
-            <a class="sidebar-heading" href="../index.php">
-                <img src="../img/logo.jpg" alt="CM Gestión Inmobiliaria" class="sidebar-logo">
-            </a>
+            <!-- Contenedor separado para el botón de cierre -->
+            <div class="close-btn-container">
+                <button class="close-btn" id="close-sidebar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <!-- Logo centrado -->
+            <div class="sidebar-logo-container">
+                <a href="../index.php">
+                    <img src="../img/logo.jpg" alt="CM Gestión Inmobiliaria" class="sidebar-logo">
+                </a>
+            </div>
+            
+            <!-- Menú de navegación -->
             <div class="list-group list-group-flush">
                 <a href="#" class="list-group-item list-group-item-action active" data-section="inicio">
                     <i class="fas fa-tachometer-alt mr-2"></i>Inicio
@@ -62,6 +71,7 @@ $numNotificaciones = count(array_filter($notificaciones, function ($notificacion
                     <?php endif; ?>
                 </a>
             </div>
+            
             <!-- Logout button at the bottom -->
             <div class="logout-container">
                 <button class="btn btn-outline-light" onclick="cerrarSesion()">
