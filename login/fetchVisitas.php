@@ -105,7 +105,6 @@ $visitasConfirmadas = obtenerVisitasConfirmadas();
 </style>
 
 <div class="table-responsive">
-    <h2>Gestión de Visitas</h2> <br><br>
     <h3 id="gestion-visitas">Visitas Solicitadas</h3>
     <table class="table table-striped">
         <thead>

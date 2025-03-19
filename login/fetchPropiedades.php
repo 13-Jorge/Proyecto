@@ -17,7 +17,6 @@ if ($pdo != null) {
 
 
 ?>
-<h2>Gestión de Propiedades</h2>
 <form id="addPropertyForm" method="post" enctype="multipart/form-data" action="insertarPropiedad.php">
     <div class="form-row">
         <div class="form-group col-md-6">

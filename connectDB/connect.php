@@ -199,6 +199,16 @@ function obtenerNotificaciones() {
     return [];
 }
 
+function obtenerNotificacionesNoLeidas() {
+    $pdo = connectDB();
+    if ($pdo != null) {
+        $consulta = "SELECT n.*, l.email FROM notificaciones n JOIN login l ON n.autor = l.user WHERE n.leido = 0 ORDER BY fecha DESC";
+        $resul = $pdo->query($consulta);
+        return $resul->fetchAll(PDO::FETCH_ASSOC);
+    }
+    return [];
+}
+
 function marcarNotificacionLeida($id) {
     $pdo = connectDB();
     if ($pdo != null) {

@@ -34,8 +34,6 @@ if ($pdo != null) {
     }
 </style>
 
-
-<h2>Gestión de Usuarios</h2>
 <div class="usuarios-table-container">
     <div class="table-responsive">
         <table class="table table-bordered">

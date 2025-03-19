@@ -30,7 +30,7 @@ $homestagingRecords = obtenerHomestaging();
 setlocale(LC_TIME, 'es_ES.UTF-8');
 ?>
 
-<h2 class="mb-4">Gestión de Homestaging</h2>
+
 
 <div class="responsive-container">
     <!-- Formulario para añadir homestaging -->
