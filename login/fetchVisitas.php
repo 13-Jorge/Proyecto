@@ -130,7 +130,7 @@ $visitasConfirmadas = obtenerVisitasConfirmadas();
                     <td class="tabla-acciones" style="min-width: 140px;">
                         <div class="d-flex flex-column flex-xl-row gap-2">
                             <a href="confirmarVisita.php?id=<?php echo $visita['id']; ?>" class="btn btn-primary btn-sm w-100 mb-2 mb-xl-0 btn-accion">Confirmar</a>
-                            <a href="confirmarVisita.php?id=<?php echo $visita['id']; ?>" class="btn btn-secondary btn-sm w-100 btn-accion">Rechazar</a>
+                            <a href="rechazarVisita.php?id=<?php echo $visita['id']; ?>" class="btn btn-secondary btn-sm w-100 btn-accion">Rechazar</a>
                         </div>
                     </td>
                 </tr>
@@ -161,7 +161,7 @@ $visitasConfirmadas = obtenerVisitasConfirmadas();
                     <td><?php echo htmlspecialchars($visita['fecha']); ?></td>
                     <td><?php echo htmlspecialchars($visita['horario']); ?></td>
                     <td class="tabla-acciones" style="min-width: 140px;">
-                        <a href="confirmarVisita.php?id=<?php echo $visita['id']; ?>" class="btn btn-secondary w-100 btn-accion">Cancelar</a>
+                        <a href="cancelarVisita.php?id=<?php echo $visita['id']; ?>" class="btn btn-secondary w-100 btn-accion">Cancelar</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
