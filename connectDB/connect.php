@@ -36,7 +36,8 @@ function consultaPass($user, $pass) {
         if ($registro == null) {
             return "<span class='error-message'>ERROR: Usuario no encontrado</span>";
         }
-        if ($pass == $registro["pass"]) {
+        // Verificar la contraseña hasheada
+        if (password_verify($pass, $registro["pass"])) {
             return true;
         } else {
             return "<span class='error-message'>ERROR: Contraseña incorrecta</span>";
@@ -77,12 +78,15 @@ function guardarDatos($user, $pass, $nombre, $apellidos, $email, $prefijoPais, $
 
     $pdo = connectDB();
     if ($pdo != null) {
+        // Hashear la contraseña
+        $hashedPass = password_hash($pass, PASSWORD_BCRYPT);
+
         $consulta = "INSERT INTO login (user, pass, nombre, apellidos, email, prefijoPais, telefono) VALUES (:user, :pass, :nombre, :apellidos, :email, :prefijoPais, :telefono)";
         $resul = $pdo->prepare($consulta);
         if ($resul != null) {
             if ($resul->execute([
                 "user" => $user,
-                "pass" => $pass,
+                "pass" => $hashedPass, // Guardar la contraseña hasheada
                 "nombre" => $nombre,
                 "apellidos" => $apellidos,
                 "email" => $email,

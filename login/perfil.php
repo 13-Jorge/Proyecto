@@ -60,8 +60,8 @@ $datosUsuario = obtenerDatosUsuario($user);
                             <input type="text" id="user" name="user" class="form-control" value="<?php echo htmlspecialchars($datosUsuario['user']); ?>" required>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="pass">Contraseña:</label>
-                            <input type="password" id="pass" name="pass" class="form-control" value="<?php echo htmlspecialchars($datosUsuario['pass']); ?>" required>
+                            <label for="pass">Nueva Contraseña:</label>
+                            <input type="password" id="pass" name="pass" class="form-control" placeholder="Dejar en blanco para no cambiar">
                         </div>
                     </div>
                     <div class="d-flex justify-content-center mt-3">

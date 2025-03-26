@@ -16,7 +16,16 @@ $telefono = recogerValor('telefono');
 $pass = recogerValor('pass');
 $es_admin = isset($_POST['es_admin']) ? 1 : 0;
 
-actualizarPerfil($oldUser, $newUser, $nombre, $apellidos, $email, $telefono, $pass, $es_admin);
+if (!empty($pass)) {
+    // Hashear la nueva contraseña si se proporciona
+    $hashedPass = password_hash($pass, PASSWORD_BCRYPT);
+} else {
+    // Mantener la contraseña actual si no se proporciona una nueva
+    $datosUsuario = obtenerDatosUsuario($oldUser);
+    $hashedPass = $datosUsuario['pass'];
+}
+
+actualizarPerfil($oldUser, $newUser, $nombre, $apellidos, $email, $telefono, $hashedPass, $es_admin);
 
 header('Location: perfil.php?user=' . $newUser);
 exit();
