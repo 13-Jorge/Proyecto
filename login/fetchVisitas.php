@@ -162,6 +162,7 @@ $visitasConfirmadas = obtenerVisitasConfirmadas();
                     <td><?php echo htmlspecialchars($visita['horario']); ?></td>
                     <td class="tabla-acciones" style="min-width: 140px;">
                         <a href="cancelarVisita.php?id=<?php echo $visita['id']; ?>" class="btn btn-secondary w-100 btn-accion">Cancelar</a>
+                        <a href="reasignarAgente.php?id=<?php echo $visita['id']; ?>" class="btn btn-primary w-100 btn-accion mt-2">Reasignar Agente</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

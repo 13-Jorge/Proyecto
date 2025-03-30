@@ -113,7 +113,11 @@ setlocale(LC_TIME, 'es_ES.UTF-8');
                         <td><?php echo htmlspecialchars($record['coste']); ?> €</td>
                         <td><?php echo htmlspecialchars($record['agente_nombre']); ?></td>
                         <td class="text-center">
-                            
+                            <form method="POST" action="deleteHomestaging.php" onsubmit="return confirm('¿Estás seguro de que deseas cancelar este homestaging?');" style="display:inline;">
+                                <input type="hidden" name="id" value="<?php echo htmlspecialchars($record['id']); ?>">
+                                <button type="submit" class="btn btn-secondary btn-sm">Cancelar</button>
+                            </form>
+                            <a href="editHomestaging.php?id=<?php echo htmlspecialchars($record['id']); ?>" class="btn btn-primary btn-sm">Gestionar</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

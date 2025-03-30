@@ -127,6 +127,20 @@ select.form-control:focus {
 }
 
 /* Estilos responsive */
+@media (max-width: 1024px) {
+    .container {
+        max-width: 90%;
+    }
+
+    .form-title {
+        font-size: 2rem;
+    }
+
+    .form-container {
+        padding: 1.5rem;
+    }
+}
+
 @media (max-width: 767px) {
     .container {
         padding: 1rem;
@@ -175,5 +189,24 @@ select.form-control:focus {
 
     .nav-actions {
         margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .form-title {
+        font-size: 1.3rem;
+    }
+
+    .form-container {
+        padding: 0.8rem;
+    }
+
+    .form-actions {
+        gap: 0.3rem;
+    }
+
+    .btn-secondary {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
     }
 }
