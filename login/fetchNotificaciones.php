@@ -63,6 +63,7 @@ $notificaciones = obtenerNotificaciones();
     <?php foreach ($notificaciones as $notificacion): ?>
         <div class="notificacion-item <?php echo $notificacion['leido'] ? 'notificacion-leida' : ''; ?>">
             <span class="notificacion-campo"><strong>Email:</strong> <?php echo htmlspecialchars($notificacion['email']); ?></span>
+            <span class="notificacion-campo"><strong>Teléfono:</strong> <?php echo htmlspecialchars($notificacion['telefono']); ?></span> <!-- Nuevo campo -->
             <span class="notificacion-campo"><strong>Fecha:</strong> <?php echo htmlspecialchars($notificacion['fecha']); ?></span>
             <div class="notificacion-mensaje">
                 <strong>Mensaje:</strong><br>

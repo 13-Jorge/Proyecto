@@ -196,7 +196,7 @@ function insertarNotificacion($autor, $mensaje) {
 function obtenerNotificaciones() {
     $pdo = connectDB();
     if ($pdo != null) {
-        $consulta = "SELECT n.*, l.email FROM notificaciones n JOIN login l ON n.autor = l.user";
+        $consulta = "SELECT n.*, l.email, l.telefono FROM notificaciones n JOIN login l ON n.autor = l.user"; // Incluye el campo 'telefono'
         $resul = $pdo->query($consulta);
         return $resul->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -206,7 +206,7 @@ function obtenerNotificaciones() {
 function obtenerNotificacionesNoLeidas() {
     $pdo = connectDB();
     if ($pdo != null) {
-        $consulta = "SELECT n.*, l.email FROM notificaciones n JOIN login l ON n.autor = l.user WHERE n.leido = 0 ORDER BY fecha DESC";
+        $consulta = "SELECT n.*, l.email, l.telefono FROM notificaciones n JOIN login l ON n.autor = l.user WHERE n.leido = 0 ORDER BY fecha DESC";
         $resul = $pdo->query($consulta);
         return $resul->fetchAll(PDO::FETCH_ASSOC);
     }
