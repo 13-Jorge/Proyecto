@@ -9,6 +9,31 @@ if ($pdo != null) {
     $resul = $pdo->query($consulta);
     $propiedades = $resul->fetchAll(PDO::FETCH_ASSOC);
 }
+
+if (isset($_POST['propiedad_id']) && isset($_POST['is_favorite']) && isset($_SESSION['user'])) {
+    $cliente_id = $_SESSION['user'];
+    $propiedad_id = $_POST['propiedad_id'];
+    $is_favorite = $_POST['is_favorite'];
+
+    if ($is_favorite === 'true') {
+        $consulta = "INSERT INTO favoritas (cliente_id, propiedad_id) VALUES (:cliente_id, :propiedad_id)";
+        $stmt = $pdo->prepare($consulta);
+        $stmt->execute([
+            'cliente_id' => $cliente_id,
+            'propiedad_id' => $propiedad_id
+        ]);
+    } else {
+        $consulta = "DELETE FROM favoritas WHERE cliente_id = :cliente_id AND propiedad_id = :propiedad_id";
+        $stmt = $pdo->prepare($consulta);
+        $stmt->execute([
+            'cliente_id' => $cliente_id,
+            'propiedad_id' => $propiedad_id
+        ]);
+    }
+
+    echo json_encode(['success' => true]);
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -59,6 +84,11 @@ if ($pdo != null) {
                                     </div>
                                 </div>
                             </div>
+                            
+                            <label class="btn-favorite">
+                                <input type="checkbox" class="favorite-checkbox" data-propiedad-id="<?php echo $propiedad['id']; ?>">
+                                <i class="fas fa-heart"></i>
+                            </label>
                         </div>
                     </div>
                 </div>
