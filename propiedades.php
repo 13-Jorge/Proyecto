@@ -45,6 +45,7 @@ if (isset($_POST['propiedad_id']) && isset($_POST['is_favorite']) && isset($_SES
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/propiedades.css">
 </head>
 <body>
     <?php include_once "./includes/header.php"; ?>
@@ -103,5 +104,6 @@ if (isset($_POST['propiedad_id']) && isset($_POST['is_favorite']) && isset($_SES
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="js/cerrarSesion.js"></script>
     <script src="js/propiedades.js"></script>
+    <script src="js/favoritos.js"></script>
 </body>
 </html>
