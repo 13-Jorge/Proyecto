@@ -20,9 +20,23 @@ include_once '../connectDB/connect.php';
             $telefono = recogerValor("phone");
 
             if ($nombre != "" && $apellidos != "" && $email != "" && $prefijoPais != "" && $telefono != "" && $user != "" && $pass != "") {
+                if (usuarioExiste($user)) {
+                    session_start();
+                    $_SESSION['registro_error'] = "ERROR: El usuario ya existe";
+                    echo "<script>window.location.href = 'registro.php';</script>";
+                    return;
+                }
+                if (emailExiste($email)) {
+                    session_start();
+                    $_SESSION['registro_error'] = "ERROR: El email ya está registrado";
+                    echo "<script>window.location.href = 'registro.php';</script>";
+                    return;
+                }
                 guardarDatos($user, $pass, $nombre, $apellidos, $email, $prefijoPais, $telefono);
             } else {
-                echo "<div class='alert alert-danger' role='alert'>ERROR: Campos vacíos</div>";
+                session_start();
+                $_SESSION['registro_error'] = "ERROR: Campos vacíos";
+                echo "<script>window.location.href = 'registro.php';</script>";
             }
         ?>
     </div>

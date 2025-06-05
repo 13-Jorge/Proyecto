@@ -24,11 +24,8 @@ session_start();
                 echo "<script>redirectToHome('$user');</script>";
             }
         } else {
-            echo "<div class='container mt-5'>
-                    <div class='alert alert-danger' role='alert'>
-                        $resultado
-                    </div>
-                  </div>";
+            $_SESSION['login_error'] = $resultado;
+            echo "<script>window.location.href = 'login.php';</script>";
         }
     ?>
 </body>

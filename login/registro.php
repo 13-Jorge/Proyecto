@@ -9,11 +9,18 @@ include_once '../connectDB/connect.php';
     <title>Registro - CM Gestión Inmobiliaria</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/comon.css">
+    <link rel="stylesheet" href="../styles/common.css">
     <script src="../js/alta.js"></script>
 </head>
 <body class="d-flex justify-content-center align-items-center vh-100">
     <div class="card p-4" style="max-width: 600px; width: 100%;">
+        <?php
+        session_start();
+        if (isset($_SESSION['registro_error'])) {
+            echo "<div class='alert alert-danger' role='alert'>" . $_SESSION['registro_error'] . "</div>";
+            unset($_SESSION['registro_error']);
+        }
+        ?>
         <h1 class="text-center mb-4">Registrarse</h1>
         <form name="form" method="post">
             <div class="form-row">

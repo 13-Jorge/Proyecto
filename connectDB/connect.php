@@ -59,6 +59,18 @@ function usuarioExiste($user) {
     return false;
 }
 
+function emailExiste($email) {
+    $pdo = connectDB();
+    if ($pdo != null) {
+        $consultaVerificar = "SELECT COUNT(*) FROM login WHERE email = :paramEmail";
+        $resulVerificar = $pdo->prepare($consultaVerificar);
+        $resulVerificar->execute(["paramEmail" => $email]);
+        $count = $resulVerificar->fetchColumn();
+        return $count > 0;
+    }
+    return false;
+}
+
 function obtenerDatosUsuario($user) {
     $pdo = connectDB();
     if ($pdo != null) {
@@ -93,8 +105,7 @@ function guardarDatos($user, $pass, $nombre, $apellidos, $email, $prefijoPais, $
                 "prefijoPais" => $prefijoPais,
                 "telefono" => $telefono
             ])) {
-                echo "<div class='alert alert-success' role='alert'>Bienvenido, $user!</div>";
-                echo "<div class='text-center mt-3'><a href='login.php' class='btn btn-primary'>Iniciar Sesión</a></div>";
+                echo "<script>window.location.href = '../index.php';</script>";
             }
         }
     }

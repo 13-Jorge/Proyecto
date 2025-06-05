@@ -2,7 +2,7 @@ function alta() {
     const pass = document.getElementById('pass').value;
     const confirmPass = document.getElementById('confirmPass').value;
     if (pass !== confirmPass) {
-        alert('Las contraseñas no coinciden');
+        alert('ERROR: Las contraseñas no coinciden');
         return;
     }
     const form = document.forms['form'];

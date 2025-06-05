@@ -115,25 +115,4 @@ $visitasHoy = contarVisitasHoy();
     <div class="logo-container mt-4 mt-md-5 mb-4 mb-md-5 d-none d-sm-flex">
         <img src="../img/logo-admin.png" alt="CM Gestión Inmobiliaria" class="img-fluid central-logo">
     </div>
-    
-    <div class="quick-actions-container mt-4 mt-md-5">
-        <h2 class="mb-3 mb-md-4">Acciones Rápidas</h2>
-        <div class="row">
-            <div class="col-12 mb-3">
-                <a href="#" class="btn btn-gold btn-block" data-section="propiedades">
-                    <i class="fas fa-plus-circle mr-2"></i>Nueva Propiedad
-                </a>
-            </div>
-            <div class="col-12 mb-3">
-                <a href="#" class="btn btn-gold btn-block" data-section="usuarios">
-                    <i class="fas fa-user-plus mr-2"></i>Nuevo Agente
-                </a>
-            </div>
-            <div class="col-12 mb-3">
-                <a href="#" class="btn btn-gold btn-block" data-section="visitas">
-                    <i class="fas fa-calendar-plus mr-2"></i>Programar Homestaging
-                </a>
-            </div>
-        </div>
-    </div>
 </div>

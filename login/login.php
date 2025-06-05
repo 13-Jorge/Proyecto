@@ -11,6 +11,13 @@
 </head>
 <body class="d-flex justify-content-center align-items-center vh-100">
     <div class="card p-4" style="max-width: 400px; width: 100%;">
+        <?php
+        session_start();
+        if (isset($_SESSION['login_error'])) {
+            echo "<div class='alert alert-danger' role='alert'>" . $_SESSION['login_error'] . "</div>";
+            unset($_SESSION['login_error']);
+        }
+        ?>
         <h1 class="text-center mb-4">Iniciar Sesión</h1>
         <form name="form" method="post">
             <div class="form-group">
