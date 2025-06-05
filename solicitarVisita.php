@@ -192,10 +192,10 @@ include_once 'connectDB/connect.php';
                                             <select id="propiedad" name="propiedad" class="form-control custom-select" required>
                                                 <?php
                                                 $pdo = connectDB();
-                                                $consulta = "SELECT id, titulo FROM propiedades";
-                                                $resul = $pdo->query($consulta);
-                                                while ($propiedad = $resul->fetch(PDO::FETCH_ASSOC)) {
-                                                    // Limitar la longitud del título para mostrar en móviles si es necesario
+                                                $consulta = "SELECT p.id, p.titulo, CASE WHEN f.cliente_id IS NOT NULL THEN 1 ELSE 0 END AS es_favorita FROM propiedades p LEFT JOIN favoritas f ON p.id = f.propiedad_id AND f.cliente_id = :cliente_id ORDER BY es_favorita DESC, p.titulo ASC";
+                                                $stmt = $pdo->prepare($consulta);
+                                                $stmt->execute(['cliente_id' => $_SESSION['user']]);
+                                                while ($propiedad = $stmt->fetch(PDO::FETCH_ASSOC)) {
                                                     $titulo = htmlspecialchars($propiedad['titulo']);
                                                     echo '<option value="' . htmlspecialchars($propiedad['id']) . '" title="' . $titulo . '">' . $titulo . '</option>';
                                                 }
