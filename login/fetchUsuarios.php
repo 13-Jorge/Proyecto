@@ -82,6 +82,9 @@ if ($pdo != null) {
 
 <div class="admins-table-container">
     <h3>Agentes</h3>
+    <div class="mb-3">
+        <a href="registroAgente.php" class="btn btn-success">Registrar Agente</a>
+    </div>
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
